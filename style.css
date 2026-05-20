@@ -1,6 +1,13 @@
 /* ==========================================
-   1. CORES E CONFIGURAÇÕES BASE
+   1. RESET E VARIÁVEIS DE COR
    ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cores padrão (Modo Claro) */
 body {
     --cor-fundo: #ffffff;
     --cor-texto: #222222;
@@ -8,12 +15,13 @@ body {
     --cor-foco: #ffcc00;
     
     font-family: Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 1rem; /* Base padrão para o cálculo do REM */
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     transition: background-color 0.2s, color 0.2s;
 }
 
+/* Inversão de Cores (Modo Alto Contraste) */
 body.alto-contraste {
     --cor-fundo: #000000;
     --cor-texto: #ffffff;
@@ -21,7 +29,11 @@ body.alto-contraste {
     --cor-foco: #00ff00;
 }
 
-/* Links de salto para teclado */
+/* ==========================================
+   2. ACESSIBILIDADE (TECLADO E LEITORES)
+   ========================================== */
+
+/* Links de salto para usuários de teclado (Tab) */
 .links-salto {
     position: absolute;
     top: -100px;
@@ -39,21 +51,20 @@ body.alto-contraste {
     top: 0;
 }
 
-/* Indicador de foco ultra visível */
+/* Indicador de foco ultra visível para navegação por teclado */
 *:focus {
     outline: 4px solid var(--cor-foco) !important;
     outline-offset: 2px;
 }
 
 /* ==========================================
-   2. ESTRUTURA DO CABEÇALHO (LAYOUT DESKTOP)
+   3. ESTRUTURA DO CABEÇALHO (LAYOUT)
    ========================================== */
 .cabecalho-principal {
     background-color: var(--cor-fundo);
     border-bottom: 3px solid var(--cor-texto);
     padding: 1rem 2rem;
     width: 100%;
-    position: relative; /* ESSENCIAL: Serve de âncora para o menu mobile */
 }
 
 .container {
@@ -63,25 +74,22 @@ body.alto-contraste {
     max-width: 1200px;
     margin: 0 auto;
     gap: 1.5rem;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Permite quebras organizadas no mobile */
 }
 
-/* Logotipo */
+/* Logo */
 .logo a {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     color: var(--cor-texto);
-    display: inline-block;
 }
 
 /* Menu de Navegação */
 .menu-nav ul {
     display: flex;
-    list-style: none; /* Garante que remova as bolinhas mesmo com o reset */
+    list-style: none;
     gap: 1.5rem;
-    margin: 0;
-    padding: 0;
 }
 
 .menu-nav a {
@@ -93,23 +101,31 @@ body.alto-contraste {
     display: inline-block;
 }
 
+/* Indicador visual da página atual */
 .menu-nav a[aria-current="page"] {
     border-bottom: 4px solid var(--cor-primaria);
 }
 
-/* Oculta o botão hambúrguer no computador */
+/* Botão de abrir/fechar menu (Escondido no Desktop) */
 .menu-toggle {
     display: none;
+    background: var(--cor-fundo);
+    border: 2px solid var(--cor-texto);
+    color: var(--cor-texto);
+    font-size: 1.8rem;
+    padding: 0.2rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 /* ==========================================
-   3. BARRA DE FERRAMENTAS DE ACESSIBILIDADE
+   4. BARRA DE FERRAMENTAS DE ACESSIBILIDADE
    ========================================== */
 .barra-acessibilidade {
     display: flex;
     align-items: center;
     gap: 15px;
-    width: 100%; 
+    width: 100%; /* Garante que ela ocupe o topo inteiro */
     justify-content: flex-end;
     border-bottom: 1px dashed var(--cor-texto);
     padding-bottom: 0.5rem;
@@ -130,10 +146,13 @@ body.alto-contraste {
     font-size: 1rem;
     font-weight: bold;
     border-radius: 4px;
+    transition: transform 0.1s;
 }
 
-/* ==========================================
-   4. RESPONSIVIDADE (MOBILE CORRIGIDO)
+.barra-acessibilidade button:active {
+    transform: scale(0.95);
+}/* ==========================================
+   4. RESPONSIVIDADE (MOBILE - MENU À ESQUERDA)
    ========================================== */
 @media (max-width: 768px) {
     
@@ -141,15 +160,15 @@ body.alto-contraste {
         justify-content: center; 
     }
 
-    /* Recalcula o espaço da logo e do botão na mesma linha */
+    /* Alinhamento dos elementos da linha */
     .container {
         display: flex !important;
         flex-direction: row !important;
-        justify-content: space-between !important;
+        justify-content: space-between !important; /* Espaça o botão da logo */
         align-items: center !important;
     }
 
-    /* SOBRESCREVE O RESET: Força o botão hambúrguer a aparecer com tamanho real */
+    /* MOVE O BOTÃO HAMBÚRGUER PARA A ESQUERDA */
     .menu-toggle {
         display: block !important; 
         background-color: var(--cor-primaria) !important;
@@ -162,13 +181,21 @@ body.alto-contraste {
         border-radius: 4px !important;
         line-height: 1 !important;
         z-index: 1001;
+        
+        order: 1; /* Força o botão a ser o primeiro elemento visual */
     }
 
-    /* Menu suspenso corrigido */
+    /* JOGA A LOGO PARA A DIREITA */
+    .logo {
+        order: 2; /* Move a logo para depois do botão hambúrguer */
+        text-align: right;
+    }
+
+    /* Menu suspenso que abre abaixo do cabeçalho */
     .menu-nav {
         display: none; 
         position: absolute;
-        top: 100%; /* Alinha perfeitamente abaixo do cabeçalho */
+        top: 100%; 
         left: 0;
         width: 100%;
         background-color: var(--cor-fundo);
@@ -176,9 +203,11 @@ body.alto-contraste {
         border-top: 1px solid var(--cor-texto);
         padding: 1rem 2rem;
         z-index: 1000;
+        
+        order: 3; /* Garante que o menu fique abaixo da linha principal */
     }
 
-    /* Classe injetada pelo script */
+    /* Classe ativa injetada pelo main.js */
     .menu-nav.ativo {
         display: block !important;
     }
@@ -193,17 +222,17 @@ body.alto-contraste {
         width: 100%;
         padding: 1rem 0;
         border-bottom: 1px dashed var(--cor-texto);
+        text-align: left; /* Garante que os links fiquem alinhados à esquerda */
     }
     
     .menu-nav li:last-child a {
         border-bottom: none;
     }
 
+    /* Indicador visual de página atual no mobile */
     .menu-nav a[aria-current="page"] {
         border-bottom: none;
         border-left: 6px solid var(--cor-primaria);
         padding-left: 0.5rem;
     }
 }
-
-
