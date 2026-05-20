@@ -1,147 +1,146 @@
 /* ==========================================
-   1. CORES E CONFIGURAÇÕES BASE
+   1. CONFIGURAÇÕES BASE DO TEMA
    ========================================== */
 body {
-    --cor-fundo: #ffffff;
-    --cor-texto: #222222;
-    --cor-primaria: #0056b3;
-    --cor-foco: #ffcc00;
+    --bg-site: #ffffff;
+    --texto-site: #222222;
+    --azul-acessivel: #0056b3;
+    --amarelo-foco: #ffcc00;
     
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+    font-family: Arial, sans-serif !important;
+    font-size: 1rem !important;
+    background-color: var(--bg-site) !important;
+    color: var(--texto-site) !important;
     transition: background-color 0.2s, color 0.2s;
 }
 
 body.alto-contraste {
-    --cor-fundo: #000000;
-    --cor-texto: #ffffff;
-    --cor-primaria: #ffff00;
-    --cor-foco: #00ff00;
+    --bg-site: #000000;
+    --texto-site: #ffffff;
+    --azul-acessivel: #ffff00;
+    --amarelo-foco: #00ff00;
 }
 
-/* Links de salto para teclado */
+/* Links de salto essenciais para o leitor de tela e teclado */
 .links-salto {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--cor-primaria);
-    color: var(--cor-fundo);
-    padding: 1rem;
-    z-index: 9999;
-    text-decoration: none;
-    font-weight: bold;
-    border: 2px solid var(--cor-texto);
+    position: absolute !important;
+    top: -100px !important;
+    left: 0 !important;
+    background: var(--azul-acessivel) !important;
+    color: var(--bg-site) !important;
+    padding: 1rem !important;
+    z-index: 99999 !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    border: 2px solid var(--texto-site) !important;
 }
 
 .links-salto:focus {
-    top: 0;
+    top: 0 !important;
 }
 
-/* Indicador de foco ultra visível */
+/* Indicador de foco ultra visível para baixa visão e navegação via Tab */
 *:focus {
-    outline: 4px solid var(--cor-foco) !important;
-    outline-offset: 2px;
+    outline: 4px solid var(--amarelo-foco) !important;
+    outline-offset: 2px !important;
 }
 
 /* ==========================================
-   2. ESTRUTURA DO CABEÇALHO (LAYOUT DESKTOP)
+   2. DESKTOP LAYOUT (TELAS GRANDES)
    ========================================== */
 .cabecalho-principal {
-    background-color: var(--cor-fundo);
-    border-bottom: 3px solid var(--cor-texto);
-    padding: 1rem 2rem;
-    width: 100%;
-    position: relative; /* Âncora para o menu mobile flutuar abaixo */
+    background-color: var(--bg-site) !important;
+    border-bottom: 3px solid var(--texto-site) !important;
+    padding: 1rem 2rem !important;
+    width: 100% !important;
+    position: relative !important; /* Âncora absoluta para o menu flutuante */
+    display: block !important;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 1.5rem;
-    flex-wrap: wrap; 
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
 }
 
-/* Logotipo */
 .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--cor-texto);
-    display: inline-block;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    color: var(--texto-site) !important;
+    display: inline-block !important;
 }
 
-/* Menu de Navegação Desktop */
+/* Lista de navegação horizontal */
 .menu-nav ul {
-    display: flex;
-    list-style: none !important; /* Remove as bolinhas do reset */
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
+    display: flex !important;
+    list-style: none !important;
+    gap: 1.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .menu-nav a {
-    color: var(--cor-texto);
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 0.5rem 0.8rem;
-    display: inline-block;
+    color: var(--texto-site) !important;
+    text-decoration: none !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    padding: 0.5rem 0.8rem !important;
+    display: inline-block !important;
 }
 
 .menu-nav a[aria-current="page"] {
-    border-bottom: 4px solid var(--cor-primaria);
+    border-bottom: 4px solid var(--azul-acessivel) !important;
 }
 
-/* Oculta o botão hambúrguer no computador por padrão */
+/* Oculta o botão hambúrguer no computador */
 .menu-toggle {
-    display: none;
+    display: none !important;
 }
 
 /* ==========================================
    3. BARRA DE FERRAMENTAS DE ACESSIBILIDADE
    ========================================== */
 .barra-acessibilidade {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%; 
-    justify-content: flex-end;
-    border-bottom: 1px dashed var(--cor-texto);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    width: 100% !important; 
+    justify-content: flex-end !important;
+    border-bottom: 1px dashed var(--texto-site) !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .controles-fonte {
-    display: flex;
-    gap: 5px;
+    display: flex !important;
+    gap: 5px !important;
 }
 
 .barra-acessibilidade button {
-    background-color: var(--cor-primaria);
-    color: var(--cor-fundo);
-    border: 2px solid var(--cor-texto);
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 4px;
+    background-color: var(--azul-acessivel) !important;
+    color: var(--bg-site) !important;
+    border: 2px solid var(--texto-site) !important;
+    padding: 0.5rem 0.8rem !important;
+    cursor: pointer !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
 }
 
 /* ==========================================
-   4. RESPONSIVIDADE BLINDADA (MOBILE - ESQUERDA)
+   4. RESPONSIVIDADE TOTAL (MOBILE - ESQUERDA)
    ========================================== */
 @media (max-width: 768px) {
     
     .barra-acessibilidade {
-        justify-content: center; 
+        justify-content: center !important; 
     }
 
-    /* Alinhamento forçado da linha */
     .container {
         display: flex !important;
         flex-direction: row !important;
@@ -149,48 +148,42 @@ body.alto-contraste {
         align-items: center !important;
     }
 
-    /* Joga a logo para a direita */
     .logo {
         order: 2 !important; 
-        text-align: right;
+        text-align: right !important;
     }
 
-    /* FORÇA O BOTÃO HAMBÚRGUER NA ESQUERDA E ANULA O RESET */
+    /* FORÇA EXIBIÇÃO E ESTILO DO BOTÃO HAMBÚRGUER NA ESQUERDA */
     .menu-toggle {
-        display: block !important; 
-        background-color: var(--cor-primaria) !important;
-        color: var(--cor-fundo) !important;
-        border: 2px solid var(--cor-texto) !important;
+        display: inline-block !important; 
+        background-color: var(--azul-acessivel) !important;
+        color: var(--bg-site) !important;
+        border: 2px solid var(--texto-site) !important;
         padding: 0.4rem 1rem !important;
         font-size: 1.8rem !important;
         font-weight: bold !important;
         cursor: pointer !important;
         border-radius: 4px !important;
         line-height: 1 !important;
-        z-index: 10001 !important;
-        order: 1 !important; /* Primeiro elemento visual */
+        z-index: 99999 !important;
+        order: 1 !important; /* Move para a ponta esquerda visual */
     }
 
-    /* Força o menu suspenso a começar ocultado, anulando o reset.css */
-    .cabecalho-principal .menu-nav {
-        display: none !important; 
+    /* CAIXA DO MENU MOBILE FLUTUANTE */
+    .menu-nav {
+        display: none !important; /* Mantém fechado inicialmente */
         position: absolute !important;
         top: 100% !important; 
         left: 0 !important;
         width: 100% !important;
-        background-color: var(--cor-fundo) !important;
-        border-bottom: 3px solid var(--cor-texto) !important;
-        border-top: 1px solid var(--cor-texto) !important;
+        background-color: var(--bg-site) !important;
+        border-bottom: 3px solid var(--texto-site) !important;
+        border-top: 1px solid var(--texto-site) !important;
         padding: 1rem 2rem !important;
-        z-index: 10000 !important;
-        order: 3 !important;
+        z-index: 99998 !important;
     }
 
-    /* CLASSE INJETADA DE FORMA MÁXIMA PARA EXIBIÇÃO */
-    .cabecalho-principal .menu-nav.ativo {
-        display: block !important;
-    }
-
+    /* REGRAS INTERNAS DOS LINKS NO CELULAR */
     .menu-nav ul {
         flex-direction: column !important;
         gap: 0.5rem !important;
@@ -203,7 +196,7 @@ body.alto-contraste {
         display: block !important;
         width: 100% !important;
         padding: 1rem 0 !important;
-        border-bottom: 1px dashed var(--cor-texto) !important;
+        border-bottom: 1px dashed var(--texto-site) !important;
         text-align: left !important;
     }
     
@@ -213,8 +206,9 @@ body.alto-contraste {
 
     .menu-nav a[aria-current="page"] {
         border-bottom: none !important;
-        border-left: 6px solid var(--cor-primaria) !important;
+        border-left: 6px solid var(--azul-acessivel) !important;
         padding-left: 0.5rem !important;
     }
 }
+
 
