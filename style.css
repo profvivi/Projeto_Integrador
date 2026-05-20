@@ -15,7 +15,7 @@ body {
     --cor-foco: #ffcc00;
     
     font-family: Arial, sans-serif;
-    font-size: 1rem; /* Permite redimensionamento no navegador */
+    font-size: 1rem; /* Base padrão para o cálculo do REM */
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     transition: background-color 0.2s, color 0.2s;
@@ -73,7 +73,8 @@ body.alto-contraste {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 1rem;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Permite quebras organizadas no mobile */
 }
 
 /* Logo */
@@ -120,11 +121,27 @@ body.alto-contraste {
 /* ==========================================
    4. BARRA DE FERRAMENTAS DE ACESSIBILIDADE
    ========================================== */
+.barra-acessibilidade {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%; /* Garante que ela ocupe o topo inteiro */
+    justify-content: flex-end;
+    border-bottom: 1px dashed var(--cor-texto);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.controles-fonte {
+    display: flex;
+    gap: 5px;
+}
+
 .barra-acessibilidade button {
     background-color: var(--cor-primaria);
     color: var(--cor-fundo);
     border: 2px solid var(--cor-texto);
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 0.8rem;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
@@ -140,8 +157,8 @@ body.alto-contraste {
    5. RESPONSIVIDADE (MOBILE)
    ========================================== */
 @media (max-width: 768px) {
-    .container {
-        position: relative;
+    .barra-acessibilidade {
+        justify-content: center; /* Centraliza as ferramentas no mobile */
     }
 
     /* Mostra o botão do menu no mobile */
@@ -183,5 +200,6 @@ body.alto-contraste {
         border-left: 6px solid var(--cor-primaria);
     }
 }
+
 
 
