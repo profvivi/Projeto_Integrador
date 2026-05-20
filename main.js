@@ -1,8 +1,44 @@
-// Gerenciamento da Web Speech API para comandos de voz
+// Elementos de Controle do Menu
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navMenu = document.getElementById('navMenu');
+const dropdownBtn = document.getElementById('dropdownBtn');
+const dropdownContainer = document.querySelector('.dropdown');
 const voiceBtn = document.getElementById('voiceBtn');
 const statusAlert = document.getElementById('statusAlert');
 
-// Verifica se o navegador atual suporta reconhecimento de voz
+// 1. Controle do Menu Hambúrguer (Mobile)
+hamburgerBtn.addEventListener('click', () => {
+    const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+    hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+    navMenu.classList.toggle('active');
+    
+    // Alerta visual de estado (importante para surdos)
+    showStatus(!isExpanded ? "Menu aberto" : "Menu fechado");
+});
+
+// 2. Controle do Menu Suspenso (Dropdown) por Clique e Teclado
+dropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
+    dropdownBtn.setAttribute('aria-expanded', !isExpanded);
+    dropdownContainer.classList.toggle('open');
+});
+
+// Fecha o dropdown se o usuário clicar fora dele ou apertar ESC
+document.addEventListener('click', () => {
+    dropdownBtn.setAttribute('aria-expanded', 'false');
+    dropdownContainer.classList.remove('open');
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        dropdownContainer.classList.remove('remove');
+        dropdownBtn.focus();
+    }
+});
+
+// 3. Gerenciamento do Comando de Voz (Web Speech API)
 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
@@ -10,49 +46,52 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     recognition.lang = 'pt-BR';
     recognition.interimResults = false;
 
-    // Ativa o microfone ao clicar no botão
     voiceBtn.addEventListener('click', () => {
         recognition.start();
-        showStatus("Ouvindo... Diga 'Início', 'Produtos', 'Sobre' ou 'Contato'.");
+        showStatus("Ouvindo... Diga o nome de uma página (ex: 'Produtos').");
     });
 
-    // Processa o resultado do comando de voz falado
     recognition.onresult = (event) => {
         const comando = event.results.transcript.toLowerCase();
         showStatus(`Você disse: "${comando}"`);
 
-        const links = document.querySelectorAll('.nav-menu a');
+        // Comandos especiais para abrir menus via voz
+        if (comando.includes('menu') || comando.includes('abrir')) {
+            if (window.innerWidth <= 768) {
+                hamburgerBtn.click();
+                return;
+            }
+        }
+
+        if (comando.includes('produtos')) {
+            dropdownBtn.click(); // Abre o menu suspenso por voz
+            dropdownBtn.focus();
+            return;
+        }
+
+        // Busca links normais e submenus
+        const links = document.querySelectorAll('.nav-menu a, .dropdown-content a');
         let encontrado = false;
 
-        // Varre os links para encontrar a palavra-chave dita
         links.forEach(link => {
             if (comando.includes(link.textContent.toLowerCase())) {
-                link.focus(); // Move o foco do teclado/leitor de tela
-                link.click(); // Executa a ação do link
+                link.focus();
+                link.click();
                 encontrado = true;
             }
         });
 
-        if (!encontrado) {
-            showStatus("Comando não reconhecido. Tente novamente.");
-        }
+        if (!encontrado) showStatus("Comando não reconhecido.");
     };
 
-    // Trata falhas ou silêncio no microfone
-    recognition.onerror = () => {
-        showStatus("Erro ao reconhecer voz ou microfone recusado.");
-    };
+    recognition.onerror = () => showStatus("Erro ao reconhecer voz.");
 } else {
-    // Esconde o recurso de voz caso o navegador não ofereça suporte
     voiceBtn.style.display = 'none';
 }
 
-// Controla a exibição das notificações na tela (essencial para deficientes auditivos)
 function showStatus(text) {
     statusAlert.textContent = text;
     statusAlert.style.display = 'block';
-    setTimeout(() => {
-        statusAlert.style.display = 'none';
-    }, 4000);
+    setTimeout(() => statusAlert.style.display = 'none', 4000);
 }
 

@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+body>
 
-    <!-- Link de salto para o conteúdo principal (Essencial para leitores de tela) -->
     <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
 
     <header class="accessible-header" role="banner">
@@ -19,27 +18,42 @@
             <a href="#" aria-label="Página inicial do site">MeuSiteAcessível</a>
         </div>
         
-        <nav class="nav-menu" role="navigation" aria-label="Menu Principal">
+        <!-- Botão Hambúrguer: invisível no desktop, visível no mobile -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMenu">
+            <span class="hamburger-icon" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Menu Principal">
             <ul>
                 <li><a href="#">Início</a></li>
-                <li><a href="#">Produtos</a></li>
+                
+                <!-- Item com Menu Suspenso (Dropdown) -->
+                <li class="dropdown">
+                    <button class="dropdown-btn" id="dropdownBtn" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenu">
+                        Produtos <span class="arrow" aria-hidden="true">▼</span>
+                    </button>
+                    <ul class="dropdown-content" id="dropdownMenu" role="menu" aria-labelledby="dropdownBtn">
+                        <li role="none"><a href="#" role="menuitem">Software</a></li>
+                        <li role="none"><a href="#" role="menuitem">Hardware</a></li>
+                        <li role="none"><a href="#" role="menuitem">Serviços</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="#">Sobre Nós</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </nav>
 
-        <!-- Controle por voz para ajudar na navegação motora/visual -->
         <button class="voice-btn" id="voiceBtn" aria-label="Ativar navegação por comando de voz">
             🎙️ Ouvir Comando
         </button>
     </header>
 
-    <!-- Alerta visual estruturado para respostas do sistema -->
     <div id="statusAlert" class="status-alert" role="alert" aria-live="polite"></div>
 
     <main id="conteudo-principal">
         <h1>Conteúdo Principal</h1>
-        <p>Utilize a tecla TAB para navegar pelo cabeçalho e testar a acessibilidade visual.</p>
+        <p>Use a tecla TAB para testar a navegação. No celular, o menu vira hambúrguer.</p>
     </main>
 
     <!-- Vinculação do arquivo JavaScript externo -->
