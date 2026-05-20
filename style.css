@@ -186,15 +186,17 @@ body.alto-contraste {
     }
 
     /* LOGO AJUSTÁVEL NA DIREITA */
+        /* LOGO PRÓXIMA AO BOTÃO HAMBÚRGUER */
     .logo {
         order: 2 !important; 
-        text-align: right !important;
-        flex-grow: 1 !important; /* Faz a logo ocupar todo o espaço restante */
-        padding-left: 10px !important; /* Cria um espaço de segurança para não encostar no botão */
+        text-align: left !important; /* Muda o alinhamento do texto para a esquerda */
+        flex-grow: 1 !important; 
+        padding-left: 15px !important; /* Distância confortável entre o hambúrguer e o texto */
         display: flex !important;
-        justify-content: flex-end !important;
+        justify-content: flex-start !important; /* Puxa a logo em direção ao botão */
         align-items: center !important;
     }
+
 
     .logo a {
         font-size: clamp(1rem, 4vw, 1.25rem) !important; /* Altera o tamanho da fonte dinamicamente com base na tela */
