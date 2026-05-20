@@ -9,58 +9,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<
+
 <body>
 
-    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+    <!-- Links de salto: essenciais para leitores de tela e navegação por teclado -->
+    <a href="#conteudo-principal" class="links-salto">Pular para o conteúdo principal</a>
 
-    <header class="accessible-header" role="banner">
-        <div class="logo">
-            <a href="#" aria-label="Página inicial do site">MeuSiteAcessível</a>
+    <header class="cabecalho-principal">
+        <div class="container">
+            <!-- Logotipo com texto alternativo claro -->
+            <div class="logo">
+                <a href="#" aria-label="Página inicial da Empresa X">
+                    <span aria-hidden="true">🔹</span> Empresa X
+                </a>
+            </div>
+
+            <!-- Botão do menu responsivo (visível apenas em telas pequenas) -->
+            <button class="menu-toggle" aria-expanded="false" aria-controls="menu-navegacao" aria-label="Abrir menu de navegação">
+                <span class="icone-menu" aria-hidden="true">≡</span>
+            </button>
+
+            <!-- Menu de navegação principal -->
+            <nav id="menu-navegacao" class="menu-nav" aria-label="Menu principal">
+                <ul>
+                    <li><a href="#" aria-current="page">Início</a></li>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+
+            <!-- Barra de Acessibilidade -->
+            <div class="barra-acessibilidade" role="toolbar" aria-label="Ferramentas de acessibilidade">
+                <button id="btn-contraste" aria-label="Alternar alto contraste">🌓 Alto Contraste</button>
+            </div>
         </div>
-        
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMenu">
-            <span class="hamburger-icon" aria-hidden="true"></span>
-        </button>
-
-        <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Menu Principal">
-            <ul>
-                <li><a href="#">Início</a></li>
-                
-                <!-- Menu Suspenso Configurado para 10 Links -->
-                <li class="dropdown">
-                    <button class="dropdown-btn" id="dropdownBtn" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenu">
-                        Produtos <span class="arrow" aria-hidden="true">▼</span>
-                    </button>
-                    <ul class="dropdown-content" id="dropdownMenu" role="menu" aria-labelledby="dropdownBtn">
-                        <li role="none"><a href="/link1" role="menuitem">Link 1</a></li>
-                        <li role="none"><a href="/link2" role="menuitem">Link 2</a></li>
-                        <li role="none"><a href="/link3" role="menuitem">Link 3</a></li>
-                        <li role="none"><a href="/link4" role="menuitem">Link 4</a></li>
-                        <li role="none"><a href="/link5" role="menuitem">Link 5</a></li>
-                        <li role="none"><a href="/link6" role="menuitem">Link 6</a></li>
-                        <li role="none"><a href="/link7" role="menuitem">Link 7</a></li>
-                        <li role="none"><a href="/link8" role="menuitem">Link 8</a></li>
-                        <li role="none"><a href="/link9" role="menuitem">Link 9</a></li>
-                        <li role="none"><a href="/link10" role="menuitem">Link 10</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#">Sobre Nós</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-
-        <button class="voice-btn" id="voiceBtn" aria-label="Ativar navegação por comando de voz">
-            🎙️ Ouvir Comando
-        </button>
     </header>
 
-    <div id="statusAlert" class="status-alert" role="alert" aria-live="polite"></div>
-
-    <main id="conteudo-principal">
-        <h1>Conteúdo Principal</h1>
-        <p>Use a tecla TAB para testar a navegação. No celular, o menu vira hambúrguer.</p>
+    <main id="conteudo-principal" tabindex="-1">
+        <!-- O conteúdo da página entra aqui -->
     </main>
 
     <script src="script.js"></script>
@@ -68,8 +55,5 @@
 </html>
 
 
-    <!-- Vinculação do arquivo JavaScript externo -->
-    <script src="script.js"></script>
-</body>
-</html>
+
 
