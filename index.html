@@ -10,8 +10,40 @@
 </head>
 
 <body>
-    
-    <script src="main.js"></script>
-</body>
 
+    <!-- Link de salto para o conteúdo principal (Essencial para leitores de tela) -->
+    <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
+    <header class="accessible-header" role="banner">
+        <div class="logo">
+            <a href="#" aria-label="Página inicial do site">MeuSiteAcessível</a>
+        </div>
+        
+        <nav class="nav-menu" role="navigation" aria-label="Menu Principal">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- Controle por voz para ajudar na navegação motora/visual -->
+        <button class="voice-btn" id="voiceBtn" aria-label="Ativar navegação por comando de voz">
+            🎙️ Ouvir Comando
+        </button>
+    </header>
+
+    <!-- Alerta visual estruturado para respostas do sistema -->
+    <div id="statusAlert" class="status-alert" role="alert" aria-live="polite"></div>
+
+    <main id="conteudo-principal">
+        <h1>Conteúdo Principal</h1>
+        <p>Utilize a tecla TAB para navegar pelo cabeçalho e testar a acessibilidade visual.</p>
+    </main>
+
+    <!-- Vinculação do arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
 </html>
+
