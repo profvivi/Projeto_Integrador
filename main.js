@@ -1,7 +1,6 @@
-// Garante que o script rode apenas após o HTML carregar completamente
 window.addEventListener('DOMContentLoaded', () => {
     
-    // 1. SELEÇÃO DE ELEMENTOS (Modificado para garantir compatibilidade)
+    // Seleção de elementos do DOM
     const menuToggle = document.querySelector('.menu-toggle');
     const menuNav = document.querySelector('.menu-nav');
     const btnContraste = document.getElementById('btn-contraste');
@@ -10,45 +9,58 @@ window.addEventListener('DOMContentLoaded', () => {
     const btnNormal = document.getElementById('btn-normal');
     const elementoHtml = document.documentElement;
 
-    // DIAGNÓSTICO RÁPIDO: Mostra no console se o JS achou o botão hambúrguer
+    // Console Check para desenvolvimento
     if (!menuToggle || !menuNav) {
-        console.error("ERRO: O JavaScript não encontrou o botão hambúrguer (.menu-toggle) ou a lista (.menu-nav). Verifique as classes no seu HTML.");
-    } else {
-        console.log("Sucesso: Elementos do menu responsivo encontrados pelo JavaScript.");
+        console.error("Aviso: Elementos do menu não encontrados. Cheque suas classes HTML.");
     }
 
     /* ==========================================================
-       2. CONTROLE DO MENU RESPONSIVO (ABRIR E FECHAR)
+       1. CONTROLE DO MENU RESPONSIVO (INJEÇÃO DIRETA NO DOM)
        ========================================================== */
     if (menuToggle && menuNav) {
         menuToggle.addEventListener('click', (evento) => {
-            // Previne qualquer comportamento padrão do navegador
             evento.preventDefault();
+            evento.stopPropagation(); // Trava efeitos colaterais do reset.css
 
-            // Verifica se o menu já está aberto
             const estaAberto = menuToggle.getAttribute('aria-expanded') === 'true';
             
-            // Inverte o estado da acessibilidade (se era true vira false, se era false vira true)
-            menuToggle.setAttribute('aria-expanded', !estaAberto);
-            
-            // Adiciona ou remove a classe que exibe o menu no CSS
-            menuNav.classList.toggle('ativo');
-
-            console.log("Botão hambúrguer clicado. Menu aberto?", !estaAberto);
+            if (estaAberto) {
+                // Procedimento para fechar o menu
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuNav.classList.remove('ativo');
+                // Força o fechamento direto no elemento (ignora arquivos CSS externos)
+                menuNav.style.setProperty('display', 'none', 'important');
+            } else {
+                // Procedimento para abrir o menu
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuNav.classList.add('ativo');
+                // Força a exibição direta no elemento (ignora arquivos CSS externos)
+                menuNav.style.setProperty('display', 'block', 'important');
+            }
         });
 
-        // ACESSIBILIDADE DE TECLADO: Fecha o menu se o usuário apertar a tecla "ESC"
+        // Fecha o menu de forma automática se o usuário clicar no resto do site
+        document.addEventListener('click', (evento) => {
+            if (!menuNav.contains(evento.target) && !menuToggle.contains(evento.target)) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuNav.classList.remove('ativo');
+                menuNav.style.setProperty('display', 'none', 'important');
+            }
+        });
+
+        // Fecha se apertar a tecla ESC (Acessibilidade)
         document.addEventListener('keydown', (evento) => {
             if (evento.key === 'Escape' && menuNav.classList.contains('ativo')) {
                 menuToggle.setAttribute('aria-expanded', 'false');
                 menuNav.classList.remove('ativo');
-                menuToggle.focus(); // Devolve o foco ao botão
+                menuNav.style.setProperty('display', 'none', 'important');
+                menuToggle.focus();
             }
         });
     }
 
     /* ==========================================================
-       3. CONTROLE DE ALTO CONTRASTE
+       2. CONTROLE DE ALTO CONTRASTE
        ========================================================== */
     function alternarContraste() {
         document.body.classList.toggle('alto-contraste');
@@ -65,7 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================
-       4. CONTROLE DE TAMANHO DA FONTE (ZOOM)
+       3. CONTROLE DE TAMANHO DA FONTE (ZOOM)
        ========================================================== */
     let tamanhoAtual = 100; 
     const tamanhoMaximo = 150;
