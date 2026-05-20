@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-body>
+<
+<body>
 
     <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
 
@@ -18,7 +19,6 @@ body>
             <a href="#" aria-label="Página inicial do site">MeuSiteAcessível</a>
         </div>
         
-        <!-- Botão Hambúrguer: invisível no desktop, visível no mobile -->
         <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMenu">
             <span class="hamburger-icon" aria-hidden="true"></span>
         </button>
@@ -27,15 +27,22 @@ body>
             <ul>
                 <li><a href="#">Início</a></li>
                 
-                <!-- Item com Menu Suspenso (Dropdown) -->
+                <!-- Menu Suspenso Configurado para 10 Links -->
                 <li class="dropdown">
                     <button class="dropdown-btn" id="dropdownBtn" aria-haspopup="true" aria-expanded="false" aria-controls="dropdownMenu">
                         Produtos <span class="arrow" aria-hidden="true">▼</span>
                     </button>
                     <ul class="dropdown-content" id="dropdownMenu" role="menu" aria-labelledby="dropdownBtn">
-                        <li role="none"><a href="#" role="menuitem">Software</a></li>
-                        <li role="none"><a href="#" role="menuitem">Hardware</a></li>
-                        <li role="none"><a href="#" role="menuitem">Serviços</a></li>
+                        <li role="none"><a href="/link1" role="menuitem">Link 1</a></li>
+                        <li role="none"><a href="/link2" role="menuitem">Link 2</a></li>
+                        <li role="none"><a href="/link3" role="menuitem">Link 3</a></li>
+                        <li role="none"><a href="/link4" role="menuitem">Link 4</a></li>
+                        <li role="none"><a href="/link5" role="menuitem">Link 5</a></li>
+                        <li role="none"><a href="/link6" role="menuitem">Link 6</a></li>
+                        <li role="none"><a href="/link7" role="menuitem">Link 7</a></li>
+                        <li role="none"><a href="/link8" role="menuitem">Link 8</a></li>
+                        <li role="none"><a href="/link9" role="menuitem">Link 9</a></li>
+                        <li role="none"><a href="/link10" role="menuitem">Link 10</a></li>
                     </ul>
                 </li>
 
@@ -55,6 +62,11 @@ body>
         <h1>Conteúdo Principal</h1>
         <p>Use a tecla TAB para testar a navegação. No celular, o menu vira hambúrguer.</p>
     </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
 
     <!-- Vinculação do arquivo JavaScript externo -->
     <script src="script.js"></script>

@@ -1,4 +1,3 @@
-// Elementos de Controle do Menu
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const navMenu = document.getElementById('navMenu');
 const dropdownBtn = document.getElementById('dropdownBtn');
@@ -6,17 +5,21 @@ const dropdownContainer = document.querySelector('.dropdown');
 const voiceBtn = document.getElementById('voiceBtn');
 const statusAlert = document.getElementById('statusAlert');
 
+// Função auxiliar para fechar o dropdown com segurança
+function closeDropdown() {
+    dropdownBtn.setAttribute('aria-expanded', 'false');
+    dropdownContainer.classList.remove('open');
+}
+
 // 1. Controle do Menu Hambúrguer (Mobile)
 hamburgerBtn.addEventListener('click', () => {
     const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
     hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
     navMenu.classList.toggle('active');
-    
-    // Alerta visual de estado (importante para surdos)
     showStatus(!isExpanded ? "Menu aberto" : "Menu fechado");
 });
 
-// 2. Controle do Menu Suspenso (Dropdown) por Clique e Teclado
+// 2. Controle do Menu Suspenso (Dropdown)
 dropdownBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const isExpanded = dropdownBtn.getAttribute('aria-expanded') === 'true';
@@ -24,21 +27,33 @@ dropdownBtn.addEventListener('click', (e) => {
     dropdownContainer.classList.toggle('open');
 });
 
-// Fecha o dropdown se o usuário clicar fora dele ou apertar ESC
-document.addEventListener('click', () => {
-    dropdownBtn.setAttribute('aria-expanded', 'false');
-    dropdownContainer.classList.remove('open');
+// Fecha o dropdown se clicar em qualquer outro lugar fora dele
+document.addEventListener('click', (e) => {
+    if (!dropdownContainer.contains(e.target)) {
+        closeDropdown();
+    }
 });
 
+// Correção: Fecha ao apertar a tecla ESC com a sintaxe correta
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        dropdownBtn.setAttribute('aria-expanded', 'false');
-        dropdownContainer.classList.remove('remove');
+        closeDropdown();
         dropdownBtn.focus();
     }
 });
 
-// 3. Gerenciamento do Comando de Voz (Web Speech API)
+// Acessibilidade por Teclado: Fecha o dropdown automaticamente se o foco sair do último link
+const dropdownLinks = dropdownContainer.querySelectorAll('.dropdown-content a');
+if (dropdownLinks.length > 0) {
+    const lastLink = dropdownLinks[dropdownLinks.length - 1];
+    lastLink.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab' && !e.shiftKey) {
+            closeDropdown();
+        }
+    });
+}
+
+// 3. Comando de Voz (Web Speech API)
 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
@@ -48,14 +63,13 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
 
     voiceBtn.addEventListener('click', () => {
         recognition.start();
-        showStatus("Ouvindo... Diga o nome de uma página (ex: 'Produtos').");
+        showStatus("Ouvindo... Diga o nome de uma página.");
     });
 
     recognition.onresult = (event) => {
         const comando = event.results.transcript.toLowerCase();
         showStatus(`Você disse: "${comando}"`);
 
-        // Comandos especiais para abrir menus via voz
         if (comando.includes('menu') || comando.includes('abrir')) {
             if (window.innerWidth <= 768) {
                 hamburgerBtn.click();
@@ -64,12 +78,11 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         }
 
         if (comando.includes('produtos')) {
-            dropdownBtn.click(); // Abre o menu suspenso por voz
+            dropdownBtn.click();
             dropdownBtn.focus();
             return;
         }
 
-        // Busca links normais e submenus
         const links = document.querySelectorAll('.nav-menu a, .dropdown-content a');
         let encontrado = false;
 
@@ -94,4 +107,5 @@ function showStatus(text) {
     statusAlert.style.display = 'block';
     setTimeout(() => statusAlert.style.display = 'none', 4000);
 }
+
 
