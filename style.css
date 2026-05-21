@@ -199,7 +199,7 @@ body.alto-contraste {
 
 /* Coluna Maior: Foto */
 .coluna-foto {
-    grid-column: span 7;
+    grid-column: span 8;
     display: flex;
     max-height: 420px; /* Controla o teto de tamanho no PC de forma segura */
     scroll-margin-top: 30px; 
@@ -219,7 +219,7 @@ body.alto-contraste {
 
 .molde-foto img {
     width: 100%;
-    height: 10; /* CORREÇÃO DE OURO: Anula a altura bruta inicial para não esmagar a legenda */
+    height: 0; /* CORREÇÃO DE OURO: Anula a altura bruta inicial para não esmagar a legenda */
     flex-grow: 1; /* Faz a foto preencher dinamicamente apenas o espaço que sobrou */
     object-fit: cover; 
 }
