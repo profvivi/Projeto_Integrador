@@ -201,11 +201,14 @@ body.alto-contraste {
 }
 
 /* Coluna Maior: Foto */
+/* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
     display: flex;
     max-height: 420px;
-    scroll-margin-top: 30px;
+    
+    /* Aumentamos de 30px para 60px para afastar a caixa de links da tela no celular */
+    scroll-margin-top: 60px; 
 }
 
 .molde-foto {
