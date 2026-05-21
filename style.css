@@ -145,6 +145,9 @@ body.alto-contraste {
 /* ==========================================================
    3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS INTEGRADAS E COMPACTAS)
    ========================================================== */
+/* ==========================================================
+   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS INTEGRADAS E COMPACTAS)
+   ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -153,10 +156,9 @@ body.alto-contraste {
 
 .container-duas-colunas {
     display: grid;
-    /* Cria 12 colunas: 5 para os links e 7 para a foto */
     grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
     gap: 2rem;
-    align-items: stretch; /* Garante que ambas as colunas tenham a mesma altura */
+    align-items: stretch;
 }
 
 /* Coluna Menor: Links */
@@ -166,8 +168,11 @@ body.alto-contraste {
     border: 2px solid var(--texto-site);
     padding: 1.5rem;
     border-radius: 8px;
-    max-height: 420px; /* Controla e limita a altura máxima da caixa */
-    overflow-y: auto;  /* Se faltar espaço por causa do zoom de fonte, cria barra de rolagem */
+    max-height: 420px;
+    overflow-y: auto;
+    
+    /* ADICIONE ESTA LINHA AQUI (ANTES DO MEDIA QUERY): */
+    scroll-margin-top: 30px; 
 }
 
 .coluna-links h2 {
@@ -200,7 +205,7 @@ body.alto-contraste {
 .coluna-foto {
     grid-column: span 7;
     display: flex;
-    max-height: 420px; /* Alinha o limite de altura exatamente com a caixa de links */
+    max-height: 420px;
 }
 
 .molde-foto {
@@ -219,7 +224,7 @@ body.alto-contraste {
     width: 100%;
     height: 100%;
     flex-grow: 1;
-    object-fit: cover; /* Adapta e corta as bordas da imagem para cobrir a caixa sem achatar */
+    object-fit: cover;
 }
 
 .molde-foto figcaption {
@@ -229,19 +234,6 @@ body.alto-contraste {
     text-align: center;
     font-weight: bold;
 }
-
-/* Esconde textos apenas visualmente (Acessibilidade) */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
 
 /* ==========================================================
    4. RESPONSIVIDADE E MOBILE (ATÉ 768px)
