@@ -145,6 +145,9 @@ body.alto-contraste {
 /* ==========================================================
    3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS INTEGRADAS E COMPACTAS)
    ========================================================== */
+/* ==========================================================
+   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COM LEGENDA EMBAIXO)
+   ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -153,10 +156,10 @@ body.alto-contraste {
 
 .container-duas-colunas {
     display: grid;
-    /* Cria 12 colunas: 5 para os links e 7 para a foto */
+    /* Links pegam 5 colunas e a foto pega 7 colunas (voltou ao padrão original) */
     grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
     gap: 2rem;
-    align-items: stretch; /* Garante que ambas as colunas tenham a mesma altura */
+    align-items: stretch; 
 }
 
 /* Coluna Menor: Links */
@@ -166,9 +169,9 @@ body.alto-contraste {
     border: 2px solid var(--texto-site);
     padding: 1.5rem;
     border-radius: 8px;
-    max-height: 420px; /* Limita a altura do bloco para ficar compacto */
-    overflow-y: auto;  /* Caso o zoom da fonte passe da altura, cria rolagem interna */
-    scroll-margin-top: 30px; /* Evita colar o topo na hora do deslize */
+    max-height: 420px; /* Mantém a altura compacta original */
+    overflow-y: auto;  
+    scroll-margin-top: 30px; 
 }
 
 .coluna-links h2 {
@@ -198,7 +201,6 @@ body.alto-contraste {
 }
 
 /* Coluna Maior: Foto */
-/* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
     display: flex;
@@ -222,7 +224,16 @@ body.alto-contraste {
     width: 100%;
     height: 100%;
     flex-grow: 1;
-    object-fit: cover; /* Faz a foto ocupar o espaço vertical completo perfeitamente */
+    object-fit: cover; 
+}
+
+/* Estilo da legenda na base da foto que você gostou */
+.molde-foto figcaption {
+    background-color: var(--texto-site);
+    color: var(--bg-site);
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* Esconde textos apenas visualmente (Acessibilidade) */
@@ -236,6 +247,7 @@ body.alto-contraste {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
 
 
 /* ==========================================================
