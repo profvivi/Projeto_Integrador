@@ -198,21 +198,12 @@ body.alto-contraste {
 }
 
 /* Coluna Maior: Foto */
+/* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
     display: flex;
-    flex-direction: column; /* Joga o novo título acima da foto */
     max-height: 420px;
-    scroll-margin-top: 30px; /* Segura o teto da rolagem de forma limpa */
-}
-
-/* Novo título visível da foto sincronizado com o dos links */
-.titulo-secao-escola {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--texto-site);
-    border-bottom: 2px solid var(--azul-acessivel);
-    padding-bottom: 0.5rem;
+    scroll-margin-top: 30px;
 }
 
 .molde-foto {
@@ -231,7 +222,7 @@ body.alto-contraste {
     width: 100%;
     height: 100%;
     flex-grow: 1;
-    object-fit: cover; /* Ajusta a foto para cobrir o molde perfeitamente */
+    object-fit: cover; /* Faz a foto ocupar o espaço vertical completo perfeitamente */
 }
 
 /* Esconde textos apenas visualmente (Acessibilidade) */
