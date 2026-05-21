@@ -135,7 +135,7 @@ body.alto-contraste {
 
 
 /* ==========================================================
-   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
+   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS INTEGRADAS E COMPACTAS)
    ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
@@ -148,7 +148,7 @@ body.alto-contraste {
     /* Cria 12 colunas: 5 para os links e 7 para a foto */
     grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
     gap: 2rem;
-    align-items: stretch; /* Força as duas colunas a terem a mesma altura */
+    align-items: stretch; /* Garante que ambas as colunas tenham a mesma altura */
 }
 
 /* Coluna Menor: Links */
@@ -158,6 +158,8 @@ body.alto-contraste {
     border: 2px solid var(--texto-site);
     padding: 1.5rem;
     border-radius: 8px;
+    max-height: 420px; /* Controla e limita a altura máxima da caixa */
+    overflow-y: auto;  /* Se faltar espaço por causa do zoom de fonte, cria barra de rolagem */
 }
 
 .coluna-links h2 {
@@ -189,7 +191,8 @@ body.alto-contraste {
 /* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
-    display: flex; /* Permite que o molde interno use 100% da altura */
+    display: flex;
+    max-height: 420px; /* Alinha o limite de altura exatamente com a caixa de links */
 }
 
 .molde-foto {
@@ -208,7 +211,7 @@ body.alto-contraste {
     width: 100%;
     height: 100%;
     flex-grow: 1;
-    object-fit: cover; /* Adapta a imagem sem distorcer seu aspecto */
+    object-fit: cover; /* Adapta e corta as bordas da imagem para cobrir a caixa sem achatar */
 }
 
 .molde-foto figcaption {
@@ -351,6 +354,7 @@ body.alto-contraste {
 
     .coluna-links, .coluna-foto {
         grid-column: span 1;
+        max-height: none; /* Desativa o limite de altura no celular para não quebrar a leitura */
     }
     
     .coluna-links {
