@@ -133,6 +133,115 @@ body.alto-contraste {
     white-space: nowrap;
 }
 
+/* ==========================================================
+   4. SEÇÃO DE CONTEÚDO (DUAS COLUNAS)
+   ========================================================== */
+.conteudo-principal {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container-duas-colunas {
+    display: grid;
+    /* Cria 12 colunas imaginárias. A primeira seção pega 5 e a segunda pega 7 */
+    grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Ajuste das áreas ocupadas por cada coluna */
+.coluna-links {
+    grid-column: span 5;
+    background-color: var(--bg-site);
+    border: 2px solid var(--texto-site);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.coluna-foto {
+    grid-column: span 7;
+}
+
+/* Estilização dos Links dos Alunos */
+.coluna-links h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--texto-site);
+    border-bottom: 2px solid var(--azul-acessivel);
+    padding-bottom: 0.5rem;
+}
+
+.lista-links-alunos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.lista-links-alunos a {
+    color: var(--azul-acessivel);
+    text-decoration: underline;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.2rem 0;
+}
+
+/* Estilização da Foto da Escola */
+.molde-foto {
+    margin: 0;
+    border: 2px solid var(--texto-site);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--texto-site);
+}
+
+.molde-foto figcaption {
+    background-color: var(--texto-site);
+    color: var(--bg-site);
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Esconde textos apenas visualmente (mantendo para leitores de tela) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================================
+   5. AJUSTE RESPONSIVIVO PARA AS COLUNAS (MOBILE)
+   ========================================================== */
+@media (max-width: 768px) {
+    .container-duas-colunas {
+        /* No celular, desfaz as colunas e empilha uma embaixo da outra */
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .coluna-links, .coluna-foto {
+        grid-column: span 1; /* Ocupam a largura total da tela do celular */
+    }
+    
+    .coluna-links {
+        order: 2; /* Joga os links para baixo da foto no celular, se preferir */
+    }
+    
+    .coluna-foto {
+        order: 1; /* A foto aparece primeiro no celular */
+    }
+}
+
 
 /* ==========================================================
    3. RESPONSIVIDADE (MOBILE CORE - ATÉ 768px)
