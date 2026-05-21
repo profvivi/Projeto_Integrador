@@ -1,4 +1,13 @@
 /* ==========================================================
+   0. COMPATIBILIDADE DE ZOOM DE FONTE (ACESSÍVEL)
+   ========================================================== */
+html {
+    /* Amarração eletrônica com a variável do JavaScript. 
+       Garante que o texto não encolha ao clicar nas âncoras */
+    font-size: var(--tamanho-zoom, 100%); 
+}
+
+/* ==========================================================
    1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (DESIGN SYSTEM)
    ========================================================== */
 body {
@@ -8,7 +17,6 @@ body {
     --amarelo-foco: #ffcc00;
     
     font-family: Arial, sans-serif;
-    font-size: 1rem;
     background-color: var(--bg-site);
     color: var(--texto-site);
     transition: background-color 0.2s, color 0.2s;

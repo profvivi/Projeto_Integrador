@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const elementoHtml = document.documentElement;
 
     /* ==========================================================
-       1. CONTROLE INTEGRADO DO MENU HAMBÚRGUER (VIA CLASSES)
+       1. CONTROLE INTEGRADO DO MENU HAMBÚRGUER
        ========================================================== */
     if (menuToggle && menuNav) {
         
@@ -30,6 +30,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const estaAberto = menuToggle.getAttribute('aria-expanded') === 'true';
             estaAberto ? fecharMenu() : abrirMenu();
+        });
+
+        // Fecha o menu automaticamente quando o aluno clicar em qualquer link dele
+        const linksMenu = menuNav.querySelectorAll('a');
+        linksMenu.forEach(link => {
+            link.addEventListener('click', () => {
+                fecharMenu();
+            });
         });
 
         // Fecha se o usuário clicar fora do menu
@@ -52,8 +60,8 @@ window.addEventListener('DOMContentLoaded', () => {
        2. REGRAS DE ALTERNAÇÃO DE ALTO CONTRASTE
        ========================================================== */
     function alternarContraste() {
-        document.body.classList.toggle('alto-contrast');
-        const modoAtivo = document.body.classList.contains('alto-contrast');
+        document.body.classList.toggle('alto-contraste');
+        const modoAtivo = document.body.classList.contains('alto-contraste');
         localStorage.setItem('altoContraste', modoAtivo);
     }
 
@@ -62,40 +70,43 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     if (localStorage.getItem('altoContraste') === 'true') {
-        document.body.classList.add('alto-contrast');
+        document.body.classList.add('alto-contraste');
     }
 
     /* ==========================================================
-       3. ZOOM DE ACESSIBILIDADE (COM MEMÓRIA LOCALSTORAGE)
+       3. ZOOM DE ACESSIBILIDADE VIA VARIÁVEL CSS (BLINDADO CONTRA ÂNCORAS)
        ========================================================== */
     const tamanhoMaximo = 150;
     const tamanhoMinimo = 85; 
     const passo = 10;          
     
-    // Recupera o tamanho salvo ou assume o padrão de 100%
     let tamanhoAtual = parseInt(localStorage.getItem('tamanhoFonte')) || 100;
-    elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+    // Injeta o tamanho na variável CSS global do HTML
+    elementoHtml.style.setProperty('--tamanho-zoom', `${tamanhoAtual}%`);
 
     const atualizarTamanhoFonte = (novoTamanho) => {
         tamanhoAtual = novoTamanho;
-        elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+        elementoHtml.style.setProperty('--tamanho-zoom', `${tamanhoAtual}%`);
         localStorage.setItem('tamanhoFonte', tamanhoAtual);
     };
 
     if (btnAumentar && btnDiminuir && btnNormal) {
-        btnAumentar.addEventListener('click', () => {
+        btnAumentar.addEventListener('click', (e) => {
+            e.preventDefault();
             if (tamanhoAtual < tamanhoMaximo) {
                 atualizarTamanhoFonte(tamanhoAtual + passo);
             }
         });
 
-        btnDiminuir.addEventListener('click', () => {
+        btnDiminuir.addEventListener('click', (e) => {
+            e.preventDefault();
             if (tamanhoAtual > tamanhoMinimo) {
                 atualizarTamanhoFonte(tamanhoAtual - passo);
             }
         });
 
-        btnNormal.addEventListener('click', () => {
+        btnNormal.addEventListener('click', (e) => {
+            e.preventDefault();
             atualizarTamanhoFonte(100);
         });
     }
