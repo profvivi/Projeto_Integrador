@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const elementoHtml = document.documentElement;
 
     /* ==========================================================
-       1. CONTROLE INTEGRADO DO MENU HAMBÚRGUER
+       1. CONTROLE DO MENU HAMBÚRGUER COM SUPORTE A ÂNCORAS
        ========================================================== */
     if (menuToggle && menuNav) {
         
@@ -27,16 +27,29 @@ window.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', (evento) => {
             evento.preventDefault();
             evento.stopPropagation(); 
-
             const estaAberto = menuToggle.getAttribute('aria-expanded') === 'true';
             estaAberto ? fecharMenu() : abrirMenu();
         });
 
-        // Fecha o menu automaticamente quando o aluno clicar em qualquer link dele
+        // Correção de Ouro: Executa a rolagem suave após fechar a caixinha do menu mobile
         const linksMenu = menuNav.querySelectorAll('a');
         linksMenu.forEach(link => {
-            link.addEventListener('click', () => {
-                fecharMenu();
+            link.addEventListener('click', (evento) => {
+                const destinoHref = link.getAttribute('href');
+                
+                // Se for um link interno (âncora)
+                if (destinoHref.startsWith('#') && destinoHref !== '#') {
+                    evento.preventDefault();
+                    fecharMenu();
+                    
+                    // Espera 150 milissegundos para o menu sumir da tela e rola até o alvo correto
+                    setTimeout(() => {
+                        const alvoElemento = document.querySelector(destinoHref);
+                        if (alvoElemento) {
+                            alvoElemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 150);
+                }
             });
         });
 
@@ -46,27 +59,17 @@ window.addEventListener('DOMContentLoaded', () => {
                 fecharMenu();
             }
         });
-
-        // Acessibilidade por Teclado: Fecha com a tecla ESC
-        document.addEventListener('keydown', (evento) => {
-            if (evento.key === 'Escape') {
-                fecharMenu();
-                menuToggle.focus();
-            }
-        });
     }
 
     /* ==========================================================
-       2. REGRAS DE ALTERNAÇÃO DE ALTO CONTRASTE
+       2. REGRAS DE ALTERNAÇÃO DE ALTO CONTRASTE (CORRIGIDO)
        ========================================================== */
-    function alternarContraste() {
-        document.body.classList.toggle('alto-contraste');
-        const modoAtivo = document.body.classList.contains('alto-contraste');
-        localStorage.setItem('altoContraste', modoAtivo);
-    }
-
     if (btnContraste) {
-        btnContraste.addEventListener('click', alternarContraste);
+        btnContraste.addEventListener('click', () => {
+            document.body.classList.toggle('alto-contraste');
+            const modoAtivo = document.body.classList.contains('alto-contraste');
+            localStorage.setItem('altoContraste', modoAtivo);
+        });
     }
 
     if (localStorage.getItem('altoContraste') === 'true') {
@@ -74,14 +77,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================
-       3. ZOOM DE ACESSIBILIDADE VIA VARIÁVEL CSS (BLINDADO CONTRA ÂNCORAS)
+       3. ZOOM DE ACESSIBILIDADE VIA VARIÁVEL CSS
        ========================================================== */
     const tamanhoMaximo = 150;
     const tamanhoMinimo = 85; 
     const passo = 10;          
     
     let tamanhoAtual = parseInt(localStorage.getItem('tamanhoFonte')) || 100;
-    // Injeta o tamanho na variável CSS global do HTML
     elementoHtml.style.setProperty('--tamanho-zoom', `${tamanhoAtual}%`);
 
     const atualizarTamanhoFonte = (novoTamanho) => {
