@@ -219,7 +219,7 @@ body.alto-contraste {
 
 .molde-foto img {
     width: 100%;
-    height: 0; /* CORREÇÃO DE OURO: Anula a altura bruta inicial para não esmagar a legenda */
+    height: 10; /* CORREÇÃO DE OURO: Anula a altura bruta inicial para não esmagar a legenda */
     flex-grow: 1; /* Faz a foto preencher dinamicamente apenas o espaço que sobrou */
     object-fit: cover; 
 }
