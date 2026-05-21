@@ -143,6 +143,9 @@ body.alto-contraste {
 /* ==========================================================
    3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
    ========================================================== */
+/* ==========================================================
+   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
+   ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -163,7 +166,7 @@ body.alto-contraste {
     border: 2px solid var(--texto-site);
     padding: 1.5rem;
     border-radius: 8px;
-    max-height: 420px; /* Mantém compacto no PC */
+    max-height: 420px; 
     overflow-y: auto;  
     scroll-margin-top: 30px; 
 }
@@ -198,7 +201,7 @@ body.alto-contraste {
 .coluna-foto {
     grid-column: span 7;
     display: flex;
-    max-height: 420px; /* Mantém compacto no PC */
+    max-height: 420px; /* Controla o teto de tamanho no PC de forma segura */
     scroll-margin-top: 30px; 
 }
 
@@ -209,28 +212,29 @@ body.alto-contraste {
     overflow: hidden;
     background-color: var(--texto-site);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Alinha foto e legenda em formato de torre */
     width: 100%;
     height: 100%;
 }
 
 .molde-foto img {
     width: 100%;
-    height: 100%;
-    flex-grow: 1;
+    height: 0; /* CORREÇÃO DE OURO: Anula a altura bruta inicial para não esmagar a legenda */
+    flex-grow: 1; /* Faz a foto preencher dinamicamente apenas o espaço que sobrou */
     object-fit: cover; 
 }
 
-/* Legenda escura que você gostou */
+/* Legenda escura blindada contra esmagamento */
 .molde-foto figcaption {
     background-color: var(--texto-site);
     color: var(--bg-site);
     padding: 0.8rem;
     text-align: center;
     font-weight: bold;
+    flex-shrink: 0; /* IMPEDE o navegador de amassar ou esconder esse bloco de texto */
 }
 
-/* Classe de acessibilidade */
+/* Esconde textos apenas visualmente (Acessibilidade) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -241,6 +245,7 @@ body.alto-contraste {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
 
 
 /* ==========================================================
