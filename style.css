@@ -148,6 +148,9 @@ body.alto-contraste {
 /* ==========================================================
    3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COM LEGENDA EMBAIXO)
    ========================================================== */
+/* ==========================================================
+   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
+   ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
     max-width: 1200px;
@@ -156,7 +159,6 @@ body.alto-contraste {
 
 .container-duas-colunas {
     display: grid;
-    /* Links pegam 5 colunas e a foto pega 7 colunas (voltou ao padrão original) */
     grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
     gap: 2rem;
     align-items: stretch; 
@@ -169,9 +171,9 @@ body.alto-contraste {
     border: 2px solid var(--texto-site);
     padding: 1.5rem;
     border-radius: 8px;
-    max-height: 420px; /* Mantém a altura compacta original */
+    max-height: 420px; 
     overflow-y: auto;  
-    scroll-margin-top: 30px; 
+    scroll-margin-top: 40px; /* Para-choque de rolagem para os links */
 }
 
 .coluna-links h2 {
@@ -201,14 +203,9 @@ body.alto-contraste {
 }
 
 /* Coluna Maior: Foto */
-/* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
     display: flex;
-    max-height: 420px;
-    
-    /* Aumentamos de 30px para 60px para afastar a caixa de links da tela no celular */
-    scroll-margin-top: 80px; 
 }
 
 .molde-foto {
@@ -221,6 +218,8 @@ body.alto-contraste {
     flex-direction: column;
     width: 100%;
     height: 100%;
+    max-height: 420px; /* Trava a altura máxima no computador aqui */
+    scroll-margin-top: 40px; /* Para-choque de rolagem perfeito para a foto */
 }
 
 .molde-foto img {
@@ -230,7 +229,6 @@ body.alto-contraste {
     object-fit: cover; 
 }
 
-/* Estilo da legenda na base da foto que você gostou */
 .molde-foto figcaption {
     background-color: var(--texto-site);
     color: var(--bg-site);
