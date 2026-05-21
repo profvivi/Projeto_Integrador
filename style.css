@@ -133,8 +133,9 @@ body.alto-contraste {
     white-space: nowrap;
 }
 
+
 /* ==========================================================
-   4. SEÇÃO DE CONTEÚDO (DUAS COLUNAS)
+   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
    ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
@@ -144,13 +145,13 @@ body.alto-contraste {
 
 .container-duas-colunas {
     display: grid;
-    /* Cria 12 colunas imaginárias. A primeira seção pega 5 e a segunda pega 7 */
+    /* Cria 12 colunas: 5 para os links e 7 para a foto */
     grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
     gap: 2rem;
-    align-items: start;
+    align-items: stretch; /* Força as duas colunas a terem a mesma altura */
 }
 
-/* Ajuste das áreas ocupadas por cada coluna */
+/* Coluna Menor: Links */
 .coluna-links {
     grid-column: span 5;
     background-color: var(--bg-site);
@@ -159,11 +160,6 @@ body.alto-contraste {
     border-radius: 8px;
 }
 
-.coluna-foto {
-    grid-column: span 7;
-}
-
-/* Estilização dos Links dos Alunos */
 .coluna-links h2 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
@@ -190,11 +186,29 @@ body.alto-contraste {
     padding: 0.2rem 0;
 }
 
-/* Estilização da Foto da Escola */
+/* Coluna Maior: Foto */
+.coluna-foto {
+    grid-column: span 7;
+    display: flex; /* Permite que o molde interno use 100% da altura */
+}
+
+.molde-foto {
+    margin: 0;
+    border: 2px solid var(--texto-site);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--texto-site);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
 .molde-foto img {
     width: 100%;
-    height: 60%;
-    object-fit: cover;
+    height: 100%;
+    flex-grow: 1;
+    object-fit: cover; /* Adapta a imagem sem distorcer seu aspecto */
 }
 
 .molde-foto figcaption {
@@ -205,7 +219,7 @@ body.alto-contraste {
     font-weight: bold;
 }
 
-/* Esconde textos apenas visualmente (mantendo para leitores de tela) */
+/* Esconde textos apenas visualmente (Acessibilidade) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -217,32 +231,9 @@ body.alto-contraste {
     border: 0;
 }
 
-/* ==========================================================
-   5. AJUSTE RESPONSIVIVO PARA AS COLUNAS (MOBILE)
-   ========================================================== */
-@media (max-width: 768px) {
-    .container-duas-colunas {
-        /* No celular, desfaz as colunas e empilha uma embaixo da outra */
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .coluna-links, .coluna-foto {
-        grid-column: span 1; /* Ocupam a largura total da tela do celular */
-    }
-    
-    .coluna-links {
-        order: 2; /* Joga os links para baixo da foto no celular, se preferir */
-    }
-    
-    .coluna-foto {
-        order: 1; /* A foto aparece primeiro no celular */
-    }
-}
-
 
 /* ==========================================================
-   3. RESPONSIVIDADE (MOBILE CORE - ATÉ 768px)
+   4. RESPONSIVIDADE E MOBILE (ATÉ 768px)
    ========================================================== */
 @media (max-width: 768px) {
     
@@ -269,7 +260,7 @@ body.alto-contraste {
         font-size: 0.9rem;
     }
 
-    /* Estrutura Inferior do Header */
+    /* Estrutura do Header Mobile */
     .container {
         display: flex;
         flex-direction: row;
@@ -278,7 +269,7 @@ body.alto-contraste {
         width: 100%;
     }
 
-    /* Botão Hambúrguer na Esquerda */
+    /* Botão Hambúrguer */
     .menu-toggle {
         display: inline-block; 
         background-color: var(--azul-acessivel);
@@ -292,27 +283,27 @@ body.alto-contraste {
         line-height: 1;
         z-index: 99999;
         order: 1;
-        flex-shrink: 0; /* Impede o botão de ser esmagado */
+        flex-shrink: 0;
     }
 
-    /* Logo Ajustável na Direita */
+    /* Logo Ajustável */
     .logo {
         order: 2; 
         text-align: left;
         flex-grow: 1; 
-        padding-left: 15px; /* Distância confortável entre o hambúrguer e o texto */
+        padding-left: 15px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
     }
 
     .logo a {
-        font-size: clamp(1rem, 4vw, 1.25rem); /* Tamanho fluido baseado na tela */
+        font-size: clamp(1rem, 4vw, 1.25rem);
     }
 
     /* Caixa do Menu Mobile Flutuante */
     .cabecalho-principal .menu-nav {
-        display: none; /* Escondido por padrão no mobile */
+        display: none;
         position: absolute;
         top: 100%; 
         left: 0;
@@ -324,7 +315,7 @@ body.alto-contraste {
         z-index: 99998;
     }
 
-    /* Classe ativada via JavaScript para exibir o menu */
+    /* Ativado via JS */
     .cabecalho-principal .menu-nav.aberto {
         display: block;
     }
@@ -350,5 +341,23 @@ body.alto-contraste {
         border-bottom: none;
         border-left: 6px solid var(--azul-acessivel);
         padding-left: 0.5rem;
+    }
+
+    /* Quebra o Grid no Mobile (Empilha as Colunas) */
+    .container-duas-colunas {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .coluna-links, .coluna-foto {
+        grid-column: span 1;
+    }
+    
+    .coluna-links {
+        order: 2; /* Links embaixo no celular */
+    }
+    
+    .coluna-foto {
+        order: 1; /* Foto no topo no celular */
     }
 }
