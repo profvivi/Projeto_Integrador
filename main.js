@@ -10,44 +10,39 @@ window.addEventListener('DOMContentLoaded', () => {
     const elementoHtml = document.documentElement;
 
     /* ==========================================================
-       1. CONTROLE INTEGRADO E BLINDADO DO MENU HAMBÚRGUER
+       1. CONTROLE INTEGRADO DO MENU HAMBÚRGUER (VIA CLASSES)
        ========================================================== */
     if (menuToggle && menuNav) {
         
-        // Remove qualquer atributo que force ocultação inicial
-        menuNav.style.removeProperty('display');
+        const fecharMenu = () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuNav.classList.remove('aberto');
+        };
+
+        const abrirMenu = () => {
+            menuToggle.setAttribute('aria-expanded', 'true');
+            menuNav.classList.add('aberto');
+        };
 
         menuToggle.addEventListener('click', (evento) => {
             evento.preventDefault();
             evento.stopPropagation(); 
 
-            // Verifica o estado lido por leitores de tela
             const estaAberto = menuToggle.getAttribute('aria-expanded') === 'true';
-            
-            if (estaAberto) {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                // Altera diretamente o atributo inline de maior peso do navegador
-                menuNav.style.setProperty('display', 'none', 'important');
-            } else {
-                menuToggle.setAttribute('aria-expanded', 'true');
-                // Altera diretamente o atributo inline de maior peso do navegador
-                menuNav.style.setProperty('display', 'block', 'important');
-            }
+            estaAberto ? fecharMenu() : abrirMenu();
         });
 
-        // Fecha se o usuário clicar no corpo da página (fora do menu)
+        // Fecha se o usuário clicar fora do menu
         document.addEventListener('click', (evento) => {
             if (!menuNav.contains(evento.target) && !menuToggle.contains(evento.target)) {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuNav.style.setProperty('display', 'none', 'important');
+                fecharMenu();
             }
         });
 
         // Acessibilidade por Teclado: Fecha com a tecla ESC
         document.addEventListener('keydown', (evento) => {
             if (evento.key === 'Escape') {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuNav.style.setProperty('display', 'none', 'important');
+                fecharMenu();
                 menuToggle.focus();
             }
         });
@@ -57,8 +52,8 @@ window.addEventListener('DOMContentLoaded', () => {
        2. REGRAS DE ALTERNAÇÃO DE ALTO CONTRASTE
        ========================================================== */
     function alternarContraste() {
-        document.body.classList.toggle('alto-contraste');
-        const modoAtivo = document.body.classList.contains('alto-contraste');
+        document.body.classList.toggle('alto-contrast');
+        const modoAtivo = document.body.classList.contains('alto-contrast');
         localStorage.setItem('altoContraste', modoAtivo);
     }
 
@@ -67,39 +62,41 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     if (localStorage.getItem('altoContraste') === 'true') {
-        document.body.classList.add('alto-contraste');
+        document.body.classList.add('alto-contrast');
     }
 
     /* ==========================================================
-       3. FERRAMENTA DE ZOOM DE ACESSIBILIDADE VISUAL
+       3. ZOOM DE ACESSIBILIDADE (COM MEMÓRIA LOCALSTORAGE)
        ========================================================== */
-    let tamanhoAtual = 100; 
     const tamanhoMaximo = 150;
     const tamanhoMinimo = 85; 
     const passo = 10;          
+    
+    // Recupera o tamanho salvo ou assume o padrão de 100%
+    let tamanhoAtual = parseInt(localStorage.getItem('tamanhoFonte')) || 100;
+    elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+
+    const atualizarTamanhoFonte = (novoTamanho) => {
+        tamanhoAtual = novoTamanho;
+        elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+        localStorage.setItem('tamanhoFonte', tamanhoAtual);
+    };
 
     if (btnAumentar && btnDiminuir && btnNormal) {
         btnAumentar.addEventListener('click', () => {
             if (tamanhoAtual < tamanhoMaximo) {
-                tamanhoAtual += passo;
-                elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+                atualizarTamanhoFonte(tamanhoAtual + passo);
             }
         });
 
         btnDiminuir.addEventListener('click', () => {
             if (tamanhoAtual > tamanhoMinimo) {
-                tamanhoAtual -= passo;
-                elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+                atualizarTamanhoFonte(tamanhoAtual - passo);
             }
         });
 
         btnNormal.addEventListener('click', () => {
-            tamanhoAtual = 100;
-            elementoHtml.style.fontSize = `${tamanhoAtual}%`;
+            atualizarTamanhoFonte(100);
         });
     }
 });
-
-
-
-
