@@ -248,6 +248,16 @@ body.alto-contraste {
     border: 0;
 }
 
+/* Centraliza o título da nova seção de introdução */
+.secao-introducao h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--texto-site);
+    border-bottom: 2px solid var(--azul-acessivel);
+    padding-bottom: 0.5rem;
+    text-align: center; /* Alinhamento centralizado */
+}
+
 
 
 /* ==========================================================
