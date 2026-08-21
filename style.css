@@ -18,6 +18,7 @@ body {
     background-color: var(--bg-site);
     color: var(--texto-site);
     transition: background-color 0.2s, color 0.2s;
+    max-width: 1000px;
 }
 
 body.alto-contraste {
