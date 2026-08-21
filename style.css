@@ -258,6 +258,22 @@ body.alto-contraste {
     text-align: center; /* Alinhamento centralizado */
 }
 
+/* Modifique estas classes no seu style.css */
+
+.secao-introducao h2 {
+    font-size: 2.2rem; /* Aumentou de 1.8rem para 2.2rem */
+    margin-bottom: 1.2rem;
+    color: var(--texto-site);
+    border-bottom: 2px solid var(--azul-acessivel);
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.secao-introducao p {
+    font-size: 1.5rem; /* Aumentou de 1.2rem para 1.5rem (Ficou bem maior) */
+    line-height: 1.7;  /* Espaçamento entre linhas ligeiramente maior para ajudar a leitura */
+    color: var(--texto-site);
+}
 
 
 /* ==========================================================
