@@ -476,11 +476,14 @@ body.alto-contraste {
 /* Efeito Interativo ao passar o mouse ou navegar via teclado no card principal */
 .card-introducao-geral:hover,
 .card-introducao-geral:focus-within {
-    transform: translateY(-6px);
+    transform: translateY(-12px); /* Aumentei de -6px para -12px (sobe o dobro) */
     border-color: #00d2ff;
-    /* Sombra azul/ciano suave para dar volume e destaque tecnológico */
-    box-shadow: 0 20px 35px rgba(0, 210, 255, 0.12);
+    border-width: 2px; /* Deixa a borda que acende mais espessa */
+    
+    /* Aumentei os raios da sombra (40px e 60px) para espalhar mais o brilho neon */
+    box-shadow: 0 30px 60px rgba(0, 210, 255, 0.25), 0 10px 20px rgba(0, 86, 179, 0.1);
 }
+
 
 /* Banner de chamada de ação final em Destaque */
 .texto-chamada-links {
