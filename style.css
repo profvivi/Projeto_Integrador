@@ -62,9 +62,16 @@ body.alto-contraste {
     border-bottom: 3px solid var(--texto-site);
     padding: 1rem 2rem;
     width: 100%;
-    position: relative;
+    
+    /* Configuração para fixar o menu no topo */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que o menu passe por cima dos cards e fotos ao rolar */
+    
     display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra sutil para dar profundidade ao rolar */
 }
+
 
 .container {
     display: flex;
