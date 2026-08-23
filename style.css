@@ -435,6 +435,9 @@ body.alto-contraste {
 /* ==========================================================
    ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (CORRIGIDO)
    ========================================================== */
+/* ==========================================================
+   ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (CORRIGIDO)
+   ========================================================== */
 .card-introducao-geral {
     margin-top: 2rem; /* [NOVO] Cria o espaço seguro para o card não colar no menu fixo */
     margin-bottom: 2rem;
@@ -453,6 +456,7 @@ body.alto-contraste {
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 
 
 /* Detalhe estético: barra tecnológica superior no card de abertura */
