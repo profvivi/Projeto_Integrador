@@ -278,21 +278,33 @@ body.alto-contraste {
 
 
 /* ==========================================================
-   ESTILIZAÇÃO DA SEÇÃO DE INTRODUÇÃO (TECH & CYBER STYLE)
+   TÍTULOS E ESTRUTURA COMPATÍVEL
    ========================================================== */
-.secao-introducao {
-    margin-bottom: 3.5rem;
-    padding: 3rem 2.5rem;
+.titulo-grade-projetos {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #0056b3;
+    letter-spacing: -0.5px;
+}
+
+/* ==========================================================
+   ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL
+   ========================================================== */
+.card-introducao-geral {
+    margin-bottom: 2.5rem;
+    padding: 2.5rem;
     background: linear-gradient(135deg, #f5f8ff 0%, #ffffff 100%);
-    border-radius: 20px;
+    border-radius: 16px;
     border: 1px solid rgba(0, 86, 179, 0.15);
     box-shadow: 0 10px 30px rgba(0, 86, 179, 0.04);
     position: relative;
     overflow: hidden;
 }
 
-/* Linha tecnológica decorativa no topo do painel */
-.secao-introducao::before {
+/* Detalhe estético: barra tecnológica superior no card de abertura */
+.card-introducao-geral::before {
     content: "";
     position: absolute;
     top: 0;
@@ -302,39 +314,36 @@ body.alto-contraste {
     background: linear-gradient(90deg, #0056b3, #00d2ff);
 }
 
-.secao-introducao h1 {
-    font-size: 2.6rem;
+.card-introducao-geral h2 {
+    font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    color: #031b4e; /* Azul espacial profundo */
-    text-align: center;
-    letter-spacing: -1px;
+    color: #031b4e;
+    border-bottom: 2px solid var(--azul-acessivel);
+    padding-bottom: 0.5rem;
 }
 
-.secao-introducao h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #0056b3;
-    letter-spacing: -0.5px;
-}
-
-.secao-introducao p {
+.card-introducao-geral p {
     font-size: 1.5rem;
     line-height: 1.8;
-    color: #4a5568; 
-    margin-bottom: 1.5rem;
+    color: #4a5568;
+    margin-bottom: 1.2rem;
 }
 
-.secao-introducao p strong {
+.card-introducao-geral p:last-child {
+    margin-bottom: 0;
+}
+
+.card-introducao-geral strong {
     color: #0056b3;
 }
 
-/* Banner de chamada final destacado e moderno */
+/* Banner de chamada de ação final em Destaque */
 .texto-chamada-links {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 3.5rem;
     font-weight: 700;
+    font-size: 1.3rem;
     color: #ffffff;
     text-align: center;
     background: linear-gradient(90deg, #0056b3 0%, #003d82 100%);
@@ -344,24 +353,23 @@ body.alto-contraste {
 }
 
 /* ==========================================================
-   GRADE DE CARDS COM EFEITO NEON INTELIGENTE
+   GRADE DE CARDS COM EFEITOS INTERATIVOS
    ========================================================== */
 .grade-cards-projeto {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin: 2.5rem 0;
+    gap: 1.8rem;
+    margin: 1.5rem 0;
 }
 
 .card-projeto {
     background: #ffffff;
     border: 1px solid rgba(0, 86, 179, 0.12);
-    border-radius: 16px;
-    padding: 2.5rem 1.8rem;
+    border-radius: 14px;
+    padding: 2.2rem 1.8rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    position: relative;
+    gap: 0.8rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -380,56 +388,26 @@ body.alto-contraste {
     margin: 0;
 }
 
-/* Ícones com visual de componente de painel (Dashboard Maker) */
-.card-icone {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, rgba(0, 86, 179, 0.1) 0%, rgba(0, 210, 255, 0.1) 100%);
-    width: 65px;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 86, 179, 0.15);
-    transition: all 0.3s ease;
-}
-
-/* ==========================================================
-   EFEITOS INTERATIVOS DE INTERFACE (HOVER / FOCUS)
-   ========================================================== */
+/* Efeito de iluminação nos cards ao passar o mouse ou focar por teclado */
 .card-projeto:hover,
 .card-projeto:focus-within {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     border-color: #00d2ff;
-    /* Sombra neon ciano simulando o brilho dos LEDs do projeto */
     box-shadow: 0 20px 35px rgba(0, 210, 255, 0.15);
 }
 
-.card-projeto:hover .card-icone {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, #0056b3 0%, #00d2ff 100%);
-    border-color: transparent;
-    color: #ffffff; 
-}
-
 /* ==========================================================
-   PRESERVAÇÃO E BLINDAGEM DE ALTO CONTRASTE (WCAG)
+   BLINDAGEM DO MODO ALTO CONTRASTE (WCAG)
    ========================================================== */
-body.alto-contraste .secao-introducao,
+body.alto-contraste .card-introducao-geral,
 body.alto-contraste .card-projeto {
     background: #000000;
     border: 2px solid var(--texto-site);
     box-shadow: none;
 }
 
-body.alto-contraste .secao-introducao::before {
+body.alto-contraste .card-introducao-geral::before {
     display: none;
-}
-
-body.alto-contraste .card-icone {
-    background: transparent;
-    border: 2px solid var(--texto-site);
 }
 
 body.alto-contraste .texto-chamada-links {
@@ -445,37 +423,43 @@ body.alto-contraste .card-projeto:hover {
 }
 
 /* ==========================================================
-   RESPONSIVIDADE E ADAPTAÇÃO PARA SMARTPHONES (ATÉ 768px)
+   RESPONSIVIDADE PARA SMARTPHONES (ATÉ 768px)
    ========================================================== */
 @media (max-width: 768px) {
-    .secao-introducao {
-        padding: 2rem 1.5rem;
-        margin-bottom: 2.5rem;
+    .card-introducao-geral {
+        padding: 1.8rem 1.2rem;
     }
 
-    .secao-introducao h1 {
-        font-size: 2rem;
-        letter-spacing: -0.5px;
+    .card-introducao-geral h2 {
+        font-size: 1.8rem;
     }
 
-    .secao-introducao h2 {
-        font-size: 1.5rem;
-    }
-
-    .secao-introducao p {
+    .card-introducao-geral p {
         font-size: 1.2rem;
         line-height: 1.6;
     }
 
+    .titulo-grade-projetos {
+        font-size: 1.4rem;
+        margin-top: 2rem;
+    }
+
     .grade-cards-projeto {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.2rem;
     }
 
     .card-projeto {
-        padding: 2rem 1.5rem;
+        padding: 1.8rem 1.2rem;
     }
     
+    .texto-chamada-links {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
     .texto-chamada-links {
         padding: 1.2rem;
         font-size: 1.2rem;
