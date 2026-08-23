@@ -432,7 +432,11 @@ body.alto-contraste {
 /* ==========================================================
    ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (COM EFEITOS)
    ========================================================== */
+/* ==========================================================
+   ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (CORRIGIDO)
+   ========================================================== */
 .card-introducao-geral {
+    margin-top: 2rem; /* [NOVO] Cria o espaço seguro para o card não colar no menu fixo */
     margin-bottom: 2rem;
     padding: 2rem;
     background: linear-gradient(135deg, #f5f8ff 0%, #ffffff 100%);
@@ -442,11 +446,14 @@ body.alto-contraste {
     position: relative;
     overflow: hidden;
     
-    /* Transição suave idêntica aos outros cards */
+    /* [NOVO] Garante que quando clicarem em "Início", o menu fixo não cubra o topo do card */
+    scroll-margin-top: 110px; 
+    
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 
 /* Detalhe estético: barra tecnológica superior no card de abertura */
 .card-introducao-geral::before {
