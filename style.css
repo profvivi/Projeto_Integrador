@@ -168,7 +168,7 @@ body.alto-contraste {
     border: 2px solid var(--texto-site);
     padding: 1.5rem;
     border-radius: 8px;
-    max-height: 420px; 
+    max-height: 480px; /* Aumentado de 420px para 480px (dá mais espaço interno) */
     overflow-y: auto;  
     scroll-margin-top: 30px; 
 }
@@ -199,13 +199,16 @@ body.alto-contraste {
     padding: 0.2rem 0;
 }
 
+
+
 /* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
     display: flex;
-    max-height: 420px; /* Controla o teto de tamanho no PC de forma segura */
+    max-height: 480px; /* Aumentado de 420px para 480px para alinhar perfeitamente com a coluna de links */
     scroll-margin-top: 30px; 
 }
+
 
 .molde-foto {
     margin: 0;
