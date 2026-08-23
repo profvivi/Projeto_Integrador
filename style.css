@@ -276,6 +276,67 @@ body.alto-contraste {
 }
 
 
+
+
+/* Bloco da Nova Introdução */
+.secao-introducao {
+    margin-bottom: 3rem;
+    padding: 1rem 0 2rem 0;
+    border-bottom: 1px dashed var(--texto-site);
+}
+
+.secao-introducao h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--texto-site);
+    border-bottom: 2px solid var(--azul-acessivel);
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.secao-introducao h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+    color: var(--texto-site);
+}
+
+.secao-introducao p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--texto-site);
+    margin-bottom: 1.5rem;
+}
+
+/* Lista de tópicos internos da introdução */
+.lista-caracteristicas-projeto {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.lista-caracteristicas-projeto li {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 1.8rem;
+    color: var(--texto-site);
+}
+
+.lista-caracteristicas-projeto li::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    color: var(--azul-acessivel);
+    font-size: 1.5rem;
+    top: -2px;
+}
+
+
+
 /* ==========================================================
    4. RESPONSIVIDADE E MOBILE (ATÉ 768px)
    ========================================================== */
@@ -400,5 +461,29 @@ body.alto-contraste {
         order: 1; 
     }
 }
+
+
+
+
+    /* Reduções de fonte responsivas para a Introdução no Celular */
+    .secao-introducao h1 {
+        font-size: 1.8rem;
+    }
+
+    .secao-introducao h2 {
+        font-size: 1.4rem;
+    }
+
+    .secao-introducao p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .lista-caracteristicas-projeto li {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        padding-left: 1.5rem;
+    }
+
 
 
