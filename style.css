@@ -148,10 +148,6 @@ body.alto-contraste {
     white-space: nowrap;
 }
 
-
-/* ==========================================================
-   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
-   ========================================================== */
 /* ==========================================================
    3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
    ========================================================== */
@@ -206,8 +202,6 @@ body.alto-contraste {
     padding: 0.2rem 0;
 }
 
-
-
 /* Coluna Maior: Foto */
 .coluna-foto {
     grid-column: span 7;
@@ -215,7 +209,6 @@ body.alto-contraste {
     max-height: 480px; /* Aumentado de 420px para 480px para alinhar perfeitamente com a coluna de links */
     scroll-margin-top: 30px; 
 }
-
 
 .molde-foto {
     margin: 0;
