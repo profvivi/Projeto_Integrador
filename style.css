@@ -516,6 +516,9 @@ body.alto-contraste {
 /* ==========================================================
    GRADE DE CARDS COM EFEITOS INTERATIVOS
    ========================================================== */
+/* ==========================================================
+   GRADE DE CARDS COM EFEITO DE BRILHO DINÂMICO
+   ========================================================== */
 .grade-cards-projeto {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -531,8 +534,12 @@ body.alto-contraste {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
+    
+    /* Transição ultra suave para o efeito de escala e profundidade */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.4s ease;
 }
 
 .card-projeto h3 {
@@ -549,39 +556,51 @@ body.alto-contraste {
     margin: 0;
 }
 
-/* Efeito de iluminação nos cards ao passar o mouse ou focar por teclado */
+/* ==========================================================
+   AURA DE LED PULSANTE (HOVER / FOCUS)
+   ========================================================= */
+/* Criamos um elemento invisível atrás do card que vai "acender" e pulsar */
+.card-projeto::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #0056b3, #00d2ff, #0056b3);
+    background-size: 200% 200%;
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(10px); /* Cria o aspecto de luz de LED espalhada */
+    transition: opacity 0.4s ease;
+}
+
+/* Quando o mouse passa por cima, o card sobe e a luz traseira acende girando/pulsando */
 .card-projeto:hover,
 .card-projeto:focus-within {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     border-color: #00d2ff;
-    box-shadow: 0 20px 35px rgba(0, 210, 255, 0.15);
 }
 
-/* ==========================================================
-   BLINDAGEM DO MODO ALTO CONTRASTE (WCAG)
-   ========================================================== */
-body.alto-contraste .card-introducao-geral,
-body.alto-contraste .card-projeto {
-    background: #000000;
-    border: 2px solid var(--texto-site);
-    box-shadow: none;
+.card-projeto:hover::after,
+.card-projeto:focus-within::after {
+    opacity: 1;
+    /* Ativa a animação do degradê se movendo ao redor da caixa */
+    animation: ondaNeon 3s linear infinite;
 }
 
-body.alto-contraste .card-introducao-geral::before {
-    display: none;
-}
-
-body.alto-contraste .texto-chamada-links {
-    background: #000000;
-    color: var(--texto-site);
-    border: 2px solid var(--azul-acessivel);
-    box-shadow: none;
-}
-
-body.alto-contraste .card-introducao-geral:hover,
-body.alto-contraste .card-projeto:hover {
-    border-color: var(--amarelo-foco);
-    box-shadow: 0 0 20px var(--amarelo-foco);
+/* Animação que faz as cores do gradiente se moverem, simulando o giro */
+@keyframes ondaNeon {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* ==========================================================
