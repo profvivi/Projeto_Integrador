@@ -419,14 +419,13 @@ body.alto-contraste {
     margin-bottom: 1.2rem;
     color: #0056b3;
     letter-spacing: -0.5px;
+    
+    /* Aumentado para 120px para garantir que a rolagem pare no lugar perfeito */
+    scroll-margin-top: 120px; 
 }
 
-/* ==========================================================
-   ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (COM EFEITOS)
-   ========================================================== */
-/* ==========================================================
-   ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (CORRIGIDO)
-   ========================================================== */
+
+
 /* ==========================================================
    ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (CORRIGIDO)
    ========================================================== */
