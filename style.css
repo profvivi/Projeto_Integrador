@@ -649,18 +649,14 @@ body.alto-contraste .card-projeto:hover {
 }
 
 .rodape-simples {
-    background-color: #1a1a1a; /* Cor de fundo escura */
-    color: #ffffff;            /* Cor do texto branca */
+    background-color:#ffffff;  /* Cor de fundo escura */
+    color: #1a1a1a;            /* Cor do texto branca */
     text-align: center;        /* Centraliza o texto */
     padding: 20px;             /* Espaçamento interno */
     font-family: Arial, sans-serif;
 }
 
-.rodape-simples p {
-    margin: 6px 0;             /* Espaçamento entre os dois parágrafos */
-    font-size: 14px;
-    letter-spacing: 0.5px;     /* Deixa a leitura mais agradável */
-}
+
 
 
 /* ==========================================================
