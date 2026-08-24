@@ -649,8 +649,8 @@ body.alto-contraste .card-projeto:hover {
 }
 
 .rodape-linha-unica {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #1a1a1a;
     text-align: center;
     padding: 8px 0;            /* Altura mínima e compacta */
     font-family: Arial, sans-serif;
