@@ -420,9 +420,11 @@ body.alto-contraste {
     color: #0056b3;
     letter-spacing: -0.5px;
     
-    /* Aumentado para 120px para garantir que a rolagem pare no lugar perfeito */
-    scroll-margin-top: 120px; 
+    /* Aumente de 120px para 160px. Isso força a rolagem a parar mais abaixo */
+    scroll-margin-top: 160px; 
 }
+
+
 
 
 
