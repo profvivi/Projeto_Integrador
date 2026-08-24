@@ -648,13 +648,19 @@ body.alto-contraste .card-projeto:hover {
     transform: translateY(-4px);
 }
 
-.rodape-simples {
-    background-color:#ffffff;  /* Cor de fundo escura */
-    color: #1a1a1a;            /* Cor do texto branca */
-    text-align: center;        /* Centraliza o texto */
-    padding: 20px;             /* Espaçamento interno */
+.rodape-compacto {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;           /* Altura menor: reduziu de 20px para 10px */
     font-family: Arial, sans-serif;
 }
+
+.rodape-compacto p {
+    margin: 2px 0;             /* Espaço mínimo entre as duas linhas */
+    font-size: 13px;           /* Tamanho de fonte ligeiramente menor */
+}
+
 
 
 
