@@ -519,6 +519,9 @@ body.alto-contraste {
 /* ==========================================================
    GRADE DE CARDS COM EFEITO DE BRILHO DINÂMICO
    ========================================================== */
+/* ==========================================================
+   GRADE DE CARDS COM EFEITO DE BORDA ILUMINADA GIRATÓRIA
+   ========================================================== */
 .grade-cards-projeto {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -528,7 +531,8 @@ body.alto-contraste {
 
 .card-projeto {
     background: #ffffff;
-    border: 1px solid rgba(0, 86, 179, 0.12);
+    /* Deixamos a borda padrão fina para o modo estático */
+    border: 1px solid rgba(0, 86, 179, 0.15); 
     border-radius: 14px;
     padding: 1.8rem 1.5rem;
     display: flex;
@@ -536,10 +540,9 @@ body.alto-contraste {
     gap: 0.8rem;
     position: relative;
     z-index: 1;
+    overflow: hidden; /* Corta o gradiente para que ele apareça apenas como uma linha fina na borda */
     
-    /* Transição ultra suave para o efeito de escala e profundidade */
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                border-color 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-projeto h3 {
@@ -557,50 +560,85 @@ body.alto-contraste {
 }
 
 /* ==========================================================
-   AURA DE LED PULSANTE (HOVER / FOCUS)
-   ========================================================= */
-/* Criamos um elemento invisível atrás do card que vai "acender" e pulsar */
+   O SEGREDO DA LINHA MÓVEL: ELEMENTO DE LUZ TRASEIRO
+   ========================================================== */
+/* Criamos a faixa de luz em degradê que vai passar por trás girando */
+.card-projeto::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* Gradiente cônico que cria a ponta de luz passando em volta */
+    background: conic-gradient(from 0deg, transparent 70%, #00d2ff 90%, #0056b3 100%);
+    z-index: -2;
+    opacity: 0; /* Começa desligado */
+    transition: opacity 0.3s ease;
+}
+
+/* Criamos a máscara interna para tampar o centro do card, criando o efeito de linha fina */
 .card-projeto::after {
     content: "";
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, #0056b3, #00d2ff, #0056b3);
-    background-size: 200% 200%;
-    border-radius: 16px;
+    inset: 2px; /* Espessura da linha iluminada (2px de borda) */
+    background: #ffffff; /* Esconde o meio do card com o fundo branco */
+    border-radius: 12px;
     z-index: -1;
     opacity: 0;
-    filter: blur(10px); /* Cria o aspecto de luz de LED espalhada */
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
 }
 
-/* Quando o mouse passa por cima, o card sobe e a luz traseira acende girando/pulsando */
+/* ==========================================================
+   GATILHO DE ATIVAÇÃO DA ANIMAÇÃO (HOVER / FOCUS)
+   ========================================================== */
 .card-projeto:hover,
 .card-projeto:focus-within {
-    transform: translateY(-8px);
-    border-color: #00d2ff;
+    transform: translateY(-6px);
+    border-color: transparent; /* Remove a borda padrão para dar lugar à luz móvel */
 }
 
+/* Ao passar o mouse, a fita e a máscara acendem e a luz começa a girar em volta */
+.card-projeto:hover::before,
+.card-projeto:focus-within::before,
 .card-projeto:hover::after,
 .card-projeto:focus-within::after {
     opacity: 1;
-    /* Ativa a animação do degradê se movendo ao redor da caixa */
-    animation: ondaNeon 3s linear infinite;
 }
 
-/* Animação que faz as cores do gradiente se moverem, simulando o giro */
-@keyframes ondaNeon {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
+.card-projeto:hover::before,
+.card-projeto:focus-within::before {
+    /* Executa a rotação contínua ao redor do contorno da caixinha */
+    animation: girarBorda 2s linear infinite;
+}
+
+/* Roda o elemento de gradiente em 360 graus */
+@keyframes girarBorda {
     100% {
-        background-position: 0% 50%;
+        transform: rotate(360deg);
     }
+}
+
+/* ==========================================================
+   BLINDAGEM DO MODO ALTO CONTRASTE (ACCESSIBILITY FIRST)
+   ========================================================== */
+body.alto-contraste .card-introducao-geral,
+body.alto-contraste .card-projeto {
+    background: #000000;
+    border: 2px solid var(--texto-site);
+}
+
+/* Desativa os truques de animação visual no alto contraste para não bugar o CSS */
+body.alto-contraste .card-projeto::before,
+body.alto-contraste .card-projeto::after {
+    display: none;
+}
+
+body.alto-contraste .card-projeto:hover {
+    /* No tema acessível, vira uma borda estrita e bem visível em verde/amarelo */
+    border-color: var(--amarelo-foco);
+    box-shadow: 0 0 15px var(--amarelo-foco);
+    transform: translateY(-4px);
 }
 
 /* ==========================================================
