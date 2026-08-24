@@ -520,6 +520,9 @@ body.alto-contraste {
 /* ==========================================================
    GRADE DE CARDS COM DESTAQUE AZULADO FORTE E BORDA GIRATÓRIA
    ========================================================== */
+/* ==========================================================
+   GRADE DE CARDS COM DESTAQUE AZULADO FORTE E BORDA GIRATÓRIA
+   ========================================================== */
 .grade-cards-projeto {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -528,10 +531,11 @@ body.alto-contraste {
 }
 
 .card-projeto {
-    /* Fundo azulado um pouco mais forte e perceptível */
-    background: #ecf2ff; 
-    /* Borda inicial mais marcada e nítida */
-    border: 1px solid rgba(0, 86, 179, 0.3); 
+    /* [TURBINADO] Tom de fundo azulado bem mais visível e nítido */
+    background: #dbeafe; 
+    
+    /* [TURBINADO] Borda inicial escura e bem definida para desenhar o card */
+    border: 2px solid #2563eb; 
     border-radius: 14px;
     padding: 1.8rem 1.5rem;
     display: flex;
@@ -541,8 +545,12 @@ body.alto-contraste {
     z-index: 1;
     overflow: hidden; /* Corta o gradiente para virar uma linha fina na borda */
     
+    /* [NOVO] Adiciona uma leve sombra fixa para o card saltar aos olhos de início */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+    
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                background-color 0.3s ease;
+                background-color 0.3s ease,
+                box-shadow 0.4s ease;
 }
 
 .card-projeto h3 {
@@ -555,8 +563,8 @@ body.alto-contraste {
 .card-projeto p {
     font-size: 1.0rem !important; 
     line-height: 1.5;
-    /* Cor mais escura para contraste perfeito sobre o novo fundo */
-    color: #334155; 
+    /* [TURBINADO] Texto escuro e forte para garantir excelente contraste de leitura */
+    color: #1e293b; 
     margin: 0;
 }
 
@@ -583,7 +591,7 @@ body.alto-contraste {
     content: "";
     position: absolute;
     inset: 2px; /* Espessura da linha iluminada (2px de borda) */
-    background: #ecf2ff; /* Acompanha o novo tom do fundo do card */
+    background: #dbeafe; /* [TURBINADO] Acompanha o novo tom forte do card */
     border-radius: 12px;
     z-index: -1;
     transition: background-color 0.3s ease;
@@ -594,9 +602,12 @@ body.alto-contraste {
    ========================================================== */
 .card-projeto:hover,
 .card-projeto:focus-within {
-    transform: translateY(-6px);
-    background-color: #ffffff; /* O fundo clareia para dar um contraste lindo com a luz */
-    border-color: transparent; /* Esconde a borda padrão para a luz móvel brilhar */
+    transform: translateY(-8px); /* Sobe um pouquinho mais alto */
+    background-color: #ffffff; /* O fundo limpa para dar contraste total com a luz correndo */
+    border-color: transparent; /* Esconde a borda antiga para dar lugar à linha neon */
+    
+    /* [NOVO] Adiciona um brilho estendido de LED ao redor do card enquanto a luz gira */
+    box-shadow: 0 20px 35px rgba(0, 210, 255, 0.25);
 }
 
 /* Ao passar o mouse, o centro fica branco e a luz do contorno acende */
@@ -617,6 +628,26 @@ body.alto-contraste {
         transform: rotate(360deg);
     }
 }
+
+/* ==========================================================
+   BLINDAGEM DO MODO ALTO CONTRASTE (WCAG)
+   ========================================================== */
+body.alto-contrast .card-projeto {
+    background: #000000;
+    border: 2px solid var(--texto-site);
+}
+
+body.alto-contraste .card-projeto::before,
+body.alto-contraste .card-projeto::after {
+    display: none;
+}
+
+body.alto-contraste .card-projeto:hover {
+    border-color: var(--amarelo-foco);
+    box-shadow: 0 0 20px var(--amarelo-foco);
+    transform: translateY(-4px);
+}
+
 
 /* ==========================================================
    RESPONSIVIDADE PARA SMARTPHONES (ATÉ 768px)
