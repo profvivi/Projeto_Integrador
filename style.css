@@ -516,14 +516,9 @@ body.alto-contraste {
 /* ==========================================================
    GRADE DE CARDS COM EFEITOS INTERATIVOS
    ========================================================== */
+
 /* ==========================================================
-   GRADE DE CARDS COM EFEITO DE BRILHO DINÂMICO
-   ========================================================== */
-/* ==========================================================
-   GRADE DE CARDS COM EFEITO DE BORDA ILUMINADA GIRATÓRIA
-   ========================================================== */
-/* ==========================================================
-   GRADE DE CARDS COM DESTAQUE AZULADO E BORDA GIRATÓRIA
+   GRADE DE CARDS COM DESTAQUE AZULADO FORTE E BORDA GIRATÓRIA
    ========================================================== */
 .grade-cards-projeto {
     display: grid;
@@ -533,9 +528,10 @@ body.alto-contraste {
 }
 
 .card-projeto {
-    /* [NOVO] Fundo sutilmente azulado para dar destaque visual inicial */
-    background: #f8faff; 
-    border: 1px solid rgba(0, 86, 179, 0.15); 
+    /* Fundo azulado um pouco mais forte e perceptível */
+    background: #ecf2ff; 
+    /* Borda inicial mais marcada e nítida */
+    border: 1px solid rgba(0, 86, 179, 0.3); 
     border-radius: 14px;
     padding: 1.8rem 1.5rem;
     display: flex;
@@ -545,7 +541,6 @@ body.alto-contraste {
     z-index: 1;
     overflow: hidden; /* Corta o gradiente para virar uma linha fina na borda */
     
-    /* Transição suave para a elevação e mudança de cor do fundo */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 background-color 0.3s ease;
 }
@@ -560,7 +555,8 @@ body.alto-contraste {
 .card-projeto p {
     font-size: 1.0rem !important; 
     line-height: 1.5;
-    color: #55637a; /* Cinza ligeiramente mais escuro para melhor contraste no fundo azulado */
+    /* Cor mais escura para contraste perfeito sobre o novo fundo */
+    color: #334155; 
     margin: 0;
 }
 
@@ -587,7 +583,7 @@ body.alto-contraste {
     content: "";
     position: absolute;
     inset: 2px; /* Espessura da linha iluminada (2px de borda) */
-    background: #f8faff; /* [NOVO] Começa com o mesmo tom azulado do card */
+    background: #ecf2ff; /* Acompanha o novo tom do fundo do card */
     border-radius: 12px;
     z-index: -1;
     transition: background-color 0.3s ease;
@@ -611,7 +607,7 @@ body.alto-contraste {
 
 .card-projeto:hover::before,
 .card-projeto:focus-within::before {
-    opacity: 1; /* Liga a luz de LED */
+    opacity: 1; /* Liga a fita de luz */
     animation: girarBorda 2s linear infinite; /* Inicia o giro contínuo */
 }
 
@@ -620,57 +616,6 @@ body.alto-contraste {
     100% {
         transform: rotate(360deg);
     }
-}
-
-/* ==========================================================
-   BLINDAGEM DO MODO ALTO CONTRASTE (WCAG)
-   ========================================================== */
-body.alto-contraste .card-projeto {
-    background: #000000;
-    border: 2px solid var(--texto-site);
-}
-
-/* Desativa as máscaras e gradientes de animação no modo acessível */
-body.alto-contraste .card-projeto::before,
-body.alto-contraste .card-projeto::after {
-    display: none;
-}
-
-body.alto-contraste .card-projeto:hover {
-    /* No Alto Contraste vira um contorno estrito em verde/amarelo fluorescente */
-    border-color: var(--amarelo-foco);
-    box-shadow: 0 0 15px var(--amarelo-foco);
-    transform: translateY(-4px);
-}
-
-
-/* Roda o elemento de gradiente em 360 graus */
-@keyframes girarBorda {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* ==========================================================
-   BLINDAGEM DO MODO ALTO CONTRASTE (ACCESSIBILITY FIRST)
-   ========================================================== */
-body.alto-contraste .card-introducao-geral,
-body.alto-contraste .card-projeto {
-    background: #000000;
-    border: 2px solid var(--texto-site);
-}
-
-/* Desativa os truques de animação visual no alto contraste para não bugar o CSS */
-body.alto-contraste .card-projeto::before,
-body.alto-contraste .card-projeto::after {
-    display: none;
-}
-
-body.alto-contraste .card-projeto:hover {
-    /* No tema acessível, vira uma borda estrita e bem visível em verde/amarelo */
-    border-color: var(--amarelo-foco);
-    box-shadow: 0 0 15px var(--amarelo-foco);
-    transform: translateY(-4px);
 }
 
 /* ==========================================================
