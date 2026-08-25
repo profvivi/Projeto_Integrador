@@ -2,8 +2,9 @@
    0. CONFIGURAÇÃO DE AMBIENTE E ROLAGEM SUAVE
    ========================================================== */
 html {
-    font-size: var(--tamanho-zoom, 100%); 
-    scroll-behavior: smooth; /* Garante a movimentação suave na tela ao clicar */
+    scroll-behavior: smooth;
+    /* RESOLVE TUDO: Cria uma folga automática em todos os cliques do menu */
+    scroll-padding-top: 160px; 
 }
 
 /* ==========================================================
@@ -201,7 +202,7 @@ body.alto-contraste {
     margin-bottom:1.2rem;
     color: #0056b3;
     letter-spacing: -0.5px;
-     scroll-margin-top: 160px; 
+ 
 }
 
 /* ==========================================================
