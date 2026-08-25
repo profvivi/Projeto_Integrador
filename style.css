@@ -767,3 +767,15 @@ body.alto-contraste .card-projeto:hover {
   background-color: #007bff;
   color: #ffffff;
 }
+/* Faz a tela deslizar suavemente até a galeria em vez de dar um pulo seco */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Garante que os 5 artigos fiquem em uma grade organizada lado a lado */
+.grade-imagens-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
