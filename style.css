@@ -356,6 +356,37 @@ body.alto-contraste {
     opacity: 1;
 }
 
+/* CONFIGURAÇÃO EXATA PARA ENCAIXAR NOS 1000px DO SEU SITE */
+.grade-imagens-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 25px !important;
+    justify-content: center !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 20px 0 !important;
+}
+
+.card-artigo {
+    width: 300px !important;         /* Tamanho ideal para caberem 3 por linha em 1000px */
+    height: 220px !important;        /* Altura fixa padrão dos cartões */
+    background-color: #1a1a1a;       /* Fundo escuro elegante para preencher as sobras da imagem inteira */
+    border: 2px solid var(--texto-site);
+    border-radius: 12px;
+    overflow: hidden !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.capa-container {
+    width: 100% !important;
+    height: 100% !important;         
+}
+
+.capa-img {
+    width: 100% !important;          
+    height: 100% !important;         
+    object-fit: contain !important;  /* SOLUÇÃO PRO: Mostra a imagem inteira sem cortar nenhum pedaço! */
+}
 
 
 
