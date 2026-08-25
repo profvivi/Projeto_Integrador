@@ -72,7 +72,7 @@ body.alto-contraste {
 .cabecalho-principal {
     background-color: var(--bg-site);
     border-bottom: 3px solid var(--texto-site);
-    padding: 0.5rem 2rem; 
+    padding: 0.5rem 1rem; 
     width: 100%;
     position: sticky;
     top: 0;
@@ -85,7 +85,7 @@ body.alto-contraste {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     gap: 1.5rem;
     flex-wrap: wrap;
@@ -161,36 +161,36 @@ body.alto-contraste {
    ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 /* Alvos das âncoras configurados para compensar a altura do topo fixo */
 #secao-introducao {
-    scroll-margin-top: 150px; 
+    scroll-margin-top: 180px; 
 }
 
 #ancora-integracao {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 180px;
     display: block;
     height: 1px;
 }
 
 #ancora-links {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 180px;
     display: block;
     height: 1px;
 }
 
 #secao-galeria {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 180px;
     padding: 2rem 0;
 }
 
 .titulo-grade-projetos {
     font-size: 1.6rem;
     font-weight: 700;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     margin-bottom: 1.2rem;
     color: #0056b3;
     letter-spacing: -0.5px;
