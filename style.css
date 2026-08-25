@@ -370,6 +370,22 @@ body.alto-contraste {
     object-fit: cover !important; /* Faz o recorte proporcional e elegante da imagem */
 }
 
+/* Centraliza e distribui os cartões das fotos de forma elegante na tela */
+.grade-imagens-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    justify-content: center !important; /* MÁGICA: Espalha e centraliza as fotos na tela */
+}
+
+/* Ajusta o tamanho dos cartões para preencherem melhor o espaço */
+.card-artigo {
+    width: 280px !important; /* Aumentado um pouquinho para a imagem ficar mais nítida na tela */
+    max-width: 100% !important;
+    display: block !important;
+}
+
+
 
 /* ==========================================================
    6. SEÇÃO DE DUAS COLUNAS (LINKS + FOTO DA ESCOLA)
