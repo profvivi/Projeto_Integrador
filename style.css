@@ -179,13 +179,13 @@ body.alto-contraste {
 }
 
 #ancora-links {
-    scroll-margin-top:160px;
+    scroll-margin-top:180px;
     display: block;
     height: 1px;
 }
 
 #secao-galeria {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 180px;
     padding: 2rem 0;
      margin-top: 20px;
 }
