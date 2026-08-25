@@ -356,6 +356,21 @@ body.alto-contraste {
     opacity: 1;
 }
 
+/* TRATAMENTO ISOLADO DAS IMAGENS DA GALERIA - FORÇA A LARGURA EXATA */
+.card-artigo {
+    width: 280px !important;    /* Limita o tamanho do bloco para não estourar os 1000px */
+    max-width: 100% !important; /* Impede que passe do limite da tela do computador */
+    display: inline-block;      /* Faz com que elas fiquem uma ao lado da outra naturalmente */
+    margin: 10px;               /* Cria uma separação limpa entre as fotos */
+}
+
+.capa-img {
+    width: 100% !important;     /* Obriga a foto a respeitar a largura do bloco (280px) */
+    height: 180px !important;   /* Define uma altura fixa para não distorcer o visual */
+    object-fit: cover !important; /* Faz o recorte proporcional e elegante da imagem */
+}
+
+
 /* ==========================================================
    6. SEÇÃO DE DUAS COLUNAS (LINKS + FOTO DA ESCOLA)
    ========================================================== */
