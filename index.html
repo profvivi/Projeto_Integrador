@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,14 @@
 </head>
 
 <body>
+
+   
     <a href="#conteudo-principal" class="links-salto">Pular para o conteúdo principal</a>
+
     <header class="cabecalho-principal">
         <div class="container">
+            
+            
             <div class="barra-acessibilidade" role="toolbar" aria-label="Ferramentas de acessibilidade">
                 <div class="controles-fonte">
                     <button id="btn-diminuir" aria-label="Diminuir tamanho do texto">A-</button>
@@ -20,34 +26,36 @@
                 <button id="btn-contraste" aria-label="Alternar alto contraste">🌓 Alto Contraste</button>
             </div>
 
+          
             <div class="logo">
                 <a href="#" aria-label="Projeto Integrador">
                     <span aria-hidden="true">🔹</span> Projeto Integrador
                 </a>
             </div>
 
-            <button class="menu-toggle" aria-expanded="false" aria-controls="menu-navegacao"
-                aria-label="Abrir menu de navegação">
+            
+            <button class="menu-toggle" aria-expanded="false" aria-controls="menu-navegacao" aria-label="Abrir menu de navegação">
                 <span class="icone-menu" aria-hidden="true">≡</span>
             </button>
 
-            <nav id="menu-navegacao" class="menu-nav" aria-label="Menu principal">
-                <ul>
-                    <li><a href="#secao-introducao" aria-current="page">Início</a></li>
-                    <li><a href="#ancora-integracao">Integração</a></li>
-                    <li><a href="#coluna-projetos">Links Projetos</a></li>
-                    <li><a href="#secao-galeria">Galeria</a></li>
-                </ul>
-            </nav>
+           
+<nav id="menu-navegacao" class="menu-nav" aria-label="Menu principal">
+    <ul>
+        <li><a href="#secao-introducao" aria-current="page">Início</a></li>
+        <li><a href="#ancora-integracao">Integração</a></li> 
+        <li><a href="#coluna-projetos">Links Projetos</a></li>
+        <li><a href="#secao-galeria">Galeria</a></li>
+    </ul>
+</nav>
         </div>
     </header>
-
+       
     <section id="secao-introducao" class="card-introducao-geral" aria-labelledby="titulo-introducao">
         <h2 id="titulo-introducao">Sobre o Projeto Integrador</h2>
         <p>
-            Bem-vindo ao nosso portal centralizador de projetos! Esta plataforma reúne as produções autorais
-            desenvolvidas pelas equipes de estudantes no 2º Trimestre, integrando de forma prática e colaborativa
-            os conhecimentos do nosso Caderno Pedagógico. Aqui, a tecnologia deixa de ser apenas linhas de código
+            Bem-vindo ao nosso portal centralizador de projetos! Esta plataforma reúne as produções autorais 
+            desenvolvidas pelas equipes de estudantes no 2º Trimestre, integrando de forma prática e colaborativa 
+            os conhecimentos do nosso Caderno Pedagógico. Aqui, a tecnologia deixa de ser apenas linhas de código 
             e se transforma em um instrumento real de <strong>inclusão social</strong> e <strong>empatia</strong>.
         </p>
         <p>
@@ -60,119 +68,127 @@
         </p>
     </section>
 
+    
     <div id="ancora-integracao"></div>
-    <h2 id="titulo-galeria" class="titulo-grade-projetos"> O Que Você Vai Encontrar Nos Projetos:</h2>
-    <div class="grade-cards-projeto">
 
+
+<h2 id="titulo-galeria" class="titulo-grade-projetos"> O Que Você Vai Encontrar Nos Projetos:</h2>
+   
+    
+    <div class="grade-cards-projeto">
+        
+      
         <article class="card-projeto">
             <h3>Programação Acessível</h3>
-            <p>Sites estruturados com HTML5 semântico e comandos dinâmicos de acessibilidade (ajuste de fonte e alto
-                contraste) para garantir autonomia a pessoas com baixa visão.</p>
+            <p>Sites estruturados com HTML5 semântico e comandos dinâmicos de acessibilidade (ajuste de fonte e alto contraste) para garantir autonomia a pessoas com baixa visão.</p>
         </article>
 
+       
         <article class="card-projeto">
             <h3>Combate à Desinformação</h3>
-            <p>Seções dedicadas a desmistificar boatos e fake news sobre óptica e saúde visual, promovendo orientações
-                baseadas em evidências científicas.</p>
+            <p>Seções dedicadas a desmistificar boatos e fake news sobre óptica e saúde visual, promovendo orientações baseadas em evidências científicas.</p>
         </article>
 
+        
         <article class="card-projeto">
             <h3>Portfólio Interdisciplinar</h3>
-            <p>A integração real entre a Física (estudos sobre a óptica do olho humano e o comportamento da luz) e a
-                Robótica (códigos, diagramas e protótipos de automação assistiva desenvolvidos no Tinkercad).</p>
+            <p>A integração real entre a Física (estudos sobre a óptica do olho humano e o comportamento da luz) e a Robótica (códigos, diagramas e protótipos de automação assistiva desenvolvidos no Tinkercad).</p>
         </article>
+
     </div>
 
+   
     <p class="texto-chamada-links">
-        Navegue pelos links abaixo, teste as ferramentas de acessibilidade criadas pelos estudantes e conheça o
-        resultado dessa jornada
+        Navegue pelos links abaixo, teste as ferramentas de acessibilidade criadas pelos estudantes e conheça o resultado dessa jornada
         de aprendizado!
     </p>
-
-    <main class="conteudo-principal">
-        <div class="container-duas-colunas">
-
-            <section id="coluna-projetos" class="coluna-links" aria-labelledby="titulo-links">
-                <h2 id="titulo-links">Links dos Projetos</h2>
-                <ul class="lista-links-alunos">
-                    <li><a href="https://projeto-integrador-ochre.vercel.app/" target="_blank">Projeto 01
-                            -Acessibilidade Digital & Ciência</a></li>
-                    <li><a href="https://rafael-faustino.github.io/Projeto_Integrador/" target="_blank">Projeto 02
-                            -PokéÓptica</a></li>
-                    <li><a href="https://joaopedrosartorelosantos.github.io/Projeto_Integrador/" target="_blank">Projeto
-                            03 -Ótica e Luz em Nossas Vidas </a></li>
-                    <li><a href="https://projeto-integrador-teal-phi.vercel.app/" target="_blank">Projeto 04 -Portal
-                            Inclusivo de Estudos</a></li>
-                    <li><a href="https://projeto-integrador-nine-ashen.vercel.app/" target="_blank">Projeto 05 -
-                            Ciência, Tecnologia e Acessibilidade</a></li>
-                    <li><a href="https://projeto-integrador-khaki-xi.vercel.app/" target="_blank">Projeto 06
-                            -Robótica,Tecnociência e Informação</a></li>
-                    <li><a href="https://rafael1cprotonyx.github.io/Projeto_Integrador/" target="_blank">Projeto 07
-                            -Educação acessível para todos</a></li>
-                    <li><a href="https://projeto-integrador-oasisdaluz.vercel.app/" target="_blank">Projeto 08 -Oásis da
-                            luz</a></li>
-                    <li><a href="https://projeto-integrador-ten-mu.vercel.app/" target="_blank">Projeto 09 -Site
-                            Acessível</a></li>
-                    <li><a href="https://valandabaptiste-coder.github.io/Projeto-Integrador/" target="_blank">Projeto 10
-                            - Óptica, Robótica & Tecnociência</a></li>
-                </ul>
-            </section>
-
-            <section id="secao-escola" class="coluna-foto" aria-labelledby="titulo-foto">
-                <h2 id="titulo-foto" class="sr-only">Nossa Escola</h2>
-                <figure class="molde-foto">
-                    <figcaption>Projeto de Integração - Nossa Escola</figcaption>
-                </figure>
-            </section>
-        </div>
-
-        <section id="secao-galeria">
-            <h2 id="titulo-galeria" class="titulo-grade-projetos">Galeria de Imagens</h2>
-            <div class="grade-imagens-links">
-
-                <article class="card-artigo">
-                    <div class="capa-container">
-                        <img src="imagem1.png" alt="Imagem 1" class="capa-img">
-                    </div>
-
-                </article>
-                <br><br>
-
-                <article class="card-artigo">
-                    <div class="capa-container">
-                        <img src="imagem2.png" alt="Imagem 2" class="capa-img">
-                    </div>
-
-                </article>
-                <br><br>
-
-                <article class="card-artigo">
-                    <div class="capa-container">
-                        <img src="imagem3.png" alt="Imagem 3" class="capa-img">
-                    </div>
-
-                </article>
-                <br><br>
-
-                <article class="card-artigo">
-                    <div class="capa-container">
-                        <img src="imagem4.png" alt="Imagem 4" class="capa-img">
-                    </div>
-
-                </article>
-                <br><br>
-
-                <article class="card-artigo">
-                    <div class="capa-container">
-                        <img src="imagem5.png" alt="Imagem 5" class="capa-img">
-                    </div>
-                </article>
-            </div>
+   
+<main class="conteudo-principal">
+    <div class="container-duas-colunas">
+        
+        
+        <section id="coluna-projetos" class="coluna-links" aria-labelledby="titulo-links">
+            <h2 id="titulo-links">Links dos Projetos</h2>
+            <ul class="lista-links-alunos">
+                <li><a href="https://projeto-integrador-ochre.vercel.app/" target="_blank">Projeto 01 -Acessibilidade Digital & Ciência</a></li>
+                <li><a href="https://rafael-faustino.github.io/Projeto_Integrador/" target="_blank">Projeto 02 -PokéÓptica</a></li>
+                <li><a href="https://joaopedrosartorelosantos.github.io/Projeto_Integrador/" target="_blank">Projeto 03 -Ótica e Luz em Nossas Vidas </a></li>
+                <li><a href="https://projeto-integrador-teal-phi.vercel.app/" target="_blank">Projeto 04 -Portal Inclusivo de Estudos</a></li>
+                <li><a href="https://projeto-integrador-nine-ashen.vercel.app/" target="_blank">Projeto 05 - Ciência, Tecnologia e Acessibilidade</a></li>
+                <li><a href="https://projeto-integrador-khaki-xi.vercel.app/" target="_blank">Projeto 06 -Robótica,Tecnociência e Informação</a></li>
+                <li><a href="https://rafael1cprotonyx.github.io/Projeto_Integrador/" target="_blank">Projeto 07 -Educação acessível para todos</a></li>
+                <li><a href="https://projeto-integrador-oasisdaluz.vercel.app/" target="_blank">Projeto 08 -Oásis da luz</a></li>
+                <li><a href="https://projeto-integrador-ten-mu.vercel.app/" target="_blank">Projeto 09 -Site Acessível</a></li>
+                <li><a href="https://valandabaptiste-coder.github.io/Projeto-Integrador/" target="_blank">Projeto 10 - Óptica, Robótica & Tecnociência</a></li>
+            </ul>
         </section>
-    </main>
-    <footer class="rodape-linha-unica">
-        <p>Projeto integrador - Inteligência Artificial e tecnologia | Rolândia, 2026.</p>
-    </footer>
+
+        
+        <section id="secao-escola" class="coluna-foto" aria-labelledby="titulo-foto">
+            <h2 id="titulo-foto" class="sr-only">Nossa Escola</h2>
+            <figure class="molde-foto">
+                
+                <figcaption>Projeto de Integração - Nossa Escola</figcaption>
+            </figure>
+        </section>
+    </div>
+
+    <section id="secao-galeria">
+        
+        <h2 id="titulo-galeria" class="titulo-grade-projetos">Galeria de Imagens</h2>
+        
+        
+        <div class="grade-imagens-links">
+            
+           
+            <article class="card-artigo">
+              <div class="capa-container">
+                <img src="imagem1.png" alt="Imagem 1" class="capa-img">
+              </div>
+              
+            </article>
+            <br><br>
+
+           
+            <article class="card-artigo">
+              <div class="capa-container">
+                <img src="imagem2.png" alt="Imagem 2" class="capa-img">
+              </div>
+              
+            </article>
+ <br><br>
+            
+            <article class="card-artigo">
+              <div class="capa-container">
+                <img src="imagem3.png" alt="Imagem 3" class="capa-img">
+              </div>
+              
+            </article>
+ <br><br>
+            
+            <article class="card-artigo">
+              <div class="capa-container">
+                <img src="imagem4.png" alt="Imagem 4" class="capa-img">
+              </div>
+              
+            </article>
+ <br><br>
+            
+            <article class="card-artigo">
+              <div class="capa-container">
+                <img src="imagem5.png" alt="Imagem 5" class="capa-img">
+              </div>
+              
+            </article>
+            
+        </div>
+    </section>
+    
+</main>
+
+<footer class="rodape-linha-unica">
+    <p>Projeto integrador - Inteligência Artificial e tecnologia | Rolândia, 2026.</p>
+</footer>
     <script src="main.js"></script>
 </body>
 </html>
