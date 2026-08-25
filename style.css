@@ -362,6 +362,7 @@ body.alto-contraste {
     grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
     gap: 2rem;
     align-items: stretch; 
+    margin-bottom: 22rem !important; /* AUMENTADO: Empurra a galeria agressivamente para baixo e limpa a sua tela */
 }
 
 .coluna-links {
