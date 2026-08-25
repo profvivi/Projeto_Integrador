@@ -169,24 +169,25 @@ body.alto-contraste {
 
 /* Alvos das âncoras configurados para compensar a altura do topo fixo */
 #secao-introducao {
-    scroll-margin-top: 280px; 
+    scroll-margin-top: 140px; 
 }
 
 #ancora-integracao {
-    scroll-margin-top: 280px;
+    scroll-margin-top: 165px;
     display: block;
     height: 1px;
 }
 
 #ancora-links {
-    scroll-margin-top:280px;
+    scroll-margin-top:165px;
     display: block;
     height: 1px;
 }
 
 #secao-galeria {
-    scroll-margin-top: 280px;
+    scroll-margin-top: 140px;
     padding: 2rem 0;
+     margin-top: 20px;
 }
 
 .titulo-grade-projetos {
