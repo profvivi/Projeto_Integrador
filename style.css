@@ -184,14 +184,12 @@ body.alto-contraste {
     scroll-margin-top:160px;
     display: block;
     height: 1px;
-   
 }
 
 #secao-galeria {
     scroll-margin-top: 0px;
     padding: 2rem 0;
-    margin-top: 20px;
-     
+    margin-top: 20px; 
 }
 
 .titulo-grade-projetos {
@@ -201,7 +199,6 @@ body.alto-contraste {
     margin-bottom:1.2rem;
     color: #0056b3;
     letter-spacing: -0.5px;
- 
 }
 
 /* ==========================================================
@@ -442,8 +439,6 @@ body.alto-contraste {
 /* ==========================================================
    7. BLOCO DA GALERIA DE 5 ARTIGOS DE PROJETOS
 
-   /* ==========================================================
-   5. RODAPÉ E ELEMENTOS FINAIS
    ========================================================== */
 .rodape-linha-unica {
     border-top: 3px solid var(--texto-site);
