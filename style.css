@@ -1,8 +1,9 @@
 /* ==========================================================
-   0. COMPATIBILIDADE DE ZOOM DE FONTE (ACESSÍVEL)
+   0. CONFIGURAÇÃO DE AMBIENTE E ROLAGEM SUAVE
    ========================================================== */
 html {
     font-size: var(--tamanho-zoom, 100%); 
+    scroll-behavior: smooth; /* Garante a movimentação suave na tela ao clicar */
 }
 
 /* ==========================================================
@@ -53,14 +54,25 @@ body.alto-contraste {
     outline-offset: 2px;
 }
 
+/* Esconde textos apenas visualmente (Acessibilidade) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
 
 /* ==========================================================
-   2. DESKTOP LAYOUT (TELAS GRANDES)
+   2. DESKTOP LAYOUT (INTERFACE SUPERIOR FIXA)
    ========================================================== */
 .cabecalho-principal {
     background-color: var(--bg-site);
     border-bottom: 3px solid var(--texto-site);
-    padding: 0.5rem 2rem; /* Reduzido de 1rem para 0.5rem em cima e embaixo */
+    padding: 0.5rem 2rem; 
     width: 100%;
     position: sticky;
     top: 0;
@@ -68,8 +80,6 @@ body.alto-contraste {
     display: block;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
-
 
 .container {
     display: flex;
@@ -125,10 +135,9 @@ body.alto-contraste {
     width: 100%; 
     justify-content: flex-end;
     border-bottom: 1px dashed var(--texto-site);
-    padding-bottom: 0.2rem; /* Reduzido de 0.5rem para 0.2rem */
-    margin-bottom: 0.3rem; /* Reduzido de 0.5rem para 0.3rem */
+    padding-bottom: 0.2rem; 
+    margin-bottom: 0.3rem; 
 }
-
 
 .controles-fonte {
     display: flex;
@@ -148,7 +157,7 @@ body.alto-contraste {
 }
 
 /* ==========================================================
-   3. SEÇÃO DE CONTEÚDO (DUAS COLUNAS COMPATÍVEIS)
+   3. REGRAS DE CONTROLE DE MARGEM DE ROLAGEM (FIX)
    ========================================================== */
 .conteudo-principal {
     padding: 2rem 1rem;
@@ -156,262 +165,28 @@ body.alto-contraste {
     margin: 0 auto;
 }
 
-.container-duas-colunas {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
-    gap: 2rem;
-    align-items: stretch; 
+/* Alvos das âncoras configurados para compensar a altura do topo fixo */
+#secao-introducao {
+    scroll-margin-top: 150px; 
 }
 
-/* Coluna Menor: Links */
-.coluna-links {
-    grid-column: span 5;
-    background-color: var(--bg-site);
-    border: 2px solid var(--texto-site);
-    padding: 1.5rem;
-    border-radius: 8px;
-    max-height: 420px; /* Aumentado de 420px para 480px (dá mais espaço interno) */
-    overflow-y: auto;  
-    scroll-margin-top: 30px; 
-}
-
-.coluna-links h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--texto-site);
-    border-bottom: 2px solid var(--azul-acessivel);
-    padding-bottom: 0.5rem;
-}
-
-.lista-links-alunos {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.lista-links-alunos a {
-    color: var(--azul-acessivel);
-    text-decoration: underline;
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: inline-block;
-    padding: 0.2rem 0;
-}
-
-/* Coluna Maior: Foto */
-.coluna-foto {
-    grid-column: span 7;
-    display: flex;
-    max-height: 420px; /* Aumentado de 420px para 480px para alinhar perfeitamente com a coluna de links */
-    scroll-margin-top: 30px; 
-}
-
-.molde-foto {
-    margin: 0;
-    border: 2px solid var(--texto-site);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: var(--texto-site);
-    display: flex;
-    flex-direction: column; /* Alinha foto e legenda em formato de torre */
-    width: 100%;
-    height: 100%;
-}
-
-.molde-foto img {
-    width: 100%;
-    height: 0; /* CORREÇÃO DE OURO: Anula a altura bruta inicial para não esmagar a legenda */
-    flex-grow: 3; /* Faz a foto preencher dinamicamente apenas o espaço que sobrou */
-    object-fit: cover; 
-}
-
-/* Legenda escura blindada contra esmagamento */
-.molde-foto figcaption {
-    background-color: var(--texto-site);
-    color: var(--bg-site);
-    padding: 0.8rem;
-    text-align: center;
-    font-weight: bold;
-    flex-shrink: 0; /* IMPEDE o navegador de amassar ou esconder esse bloco de texto */
-}
-
-/* Esconde textos apenas visualmente (Acessibilidade) */
-.sr-only {
-    position: absolute;
-    width: 1px;
+#ancora-integracao {
+    scroll-margin-top: 160px;
+    display: block;
     height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
 }
 
-/* Centraliza o título da nova seção de introdução */
-.secao-introducao h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--texto-site);
-    border-bottom: 2px solid var(--azul-acessivel);
-    padding-bottom: 0.5rem;
-    text-align: center; /* Alinhamento centralizado */
+#ancora-links {
+    scroll-margin-top: 160px;
+    display: block;
+    height: 1px;
 }
 
-/* Modifique estas classes no seu style.css */
-
-.secao-introducao h2 {
-    font-size: 2.2rem; /* Aumentou de 1.8rem para 2.2rem */
-    margin-bottom: 1.2rem;
-    color: var(--texto-site);
-    border-bottom: 2px solid var(--azul-acessivel);
-    padding-bottom: 0.5rem;
-    text-align: center;
+#secao-galeria {
+    scroll-margin-top: 160px;
+    padding: 2rem 0;
 }
 
-.secao-introducao p {
-    font-size: 1.5rem; /* Aumentou de 1.2rem para 1.5rem (Ficou bem maior) */
-    line-height: 1.7;  /* Espaçamento entre linhas ligeiramente maior para ajudar a leitura */
-    color: var(--texto-site);
-}
-
-
-/* ==========================================================
-   4. RESPONSIVIDADE E MOBILE (ATÉ 768px)
-   ========================================================== */
-@media (max-width: 768px) {
-    
-    .cabecalho-principal {
-        padding: 0.8rem 1rem;
-    }
-
-    .barra-acessibilidade {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 0.8rem;
-        padding-bottom: 0.8rem;
-    }
-
-    .controles-fonte {
-        gap: 4px;
-    }
-
-    .barra-acessibilidade button {
-        padding: 0.5rem 0.6rem;
-        font-size: 0.9rem;
-    }
-
-    .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-
-    .menu-toggle {
-        display: inline-block; 
-        background-color: var(--azul-acessivel);
-        color: var(--bg-site);
-        border: 2px solid var(--texto-site);
-        padding: 0.4rem 0.8rem;
-        font-size: 1.6rem;
-        font-weight: bold;
-        cursor: pointer;
-        border-radius: 4px;
-        line-height: 1;
-        z-index: 99999;
-        order: 1;
-        flex-shrink: 0;
-    }
-
-    .logo {
-        order: 2; 
-        text-align: left;
-        flex-grow: 1; 
-        padding-left: 15px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    .logo a {
-        font-size: clamp(1rem, 4vw, 1.25rem);
-    }
-
-    .cabecalho-principal .menu-nav {
-        display: none;
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-site);
-        border-bottom: 3px solid var(--texto-site);
-        border-top: 1px solid var(--texto-site);
-        padding: 1rem;
-        z-index: 99998;
-    }
-
-    .cabecalho-principal .menu-nav.aberto {
-        display: block;
-    }
-
-    .menu-nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .menu-nav a {
-        display: block;
-        width: 100%;
-        padding: 0.8rem 0;
-        border-bottom: 1px dashed var(--texto-site);
-        text-align: left;
-    }
-    
-    .menu-nav li:last-child a {
-        border-bottom: none;
-    }
-
-    .menu-nav a[aria-current="page"] {
-        border-bottom: none;
-        border-left: 6px solid var(--azul-acessivel);
-        padding-left: 0.5rem;
-    }
-
-    /* SOLUÇÃO MOBILE DEFINITIVA: Empilha as colunas e remove as travas de altura */
-    .container-duas-colunas {
-        grid-template-columns: 1fr;
-        gap: 2.5rem; /* Aumentamos o espaço entre as seções no celular */
-    }
-
-    .coluna-links {
-        grid-column: span 1;
-        max-height: none; /* Deixa os links respirarem no celular */
-        order: 2; 
-    }
-
-    .coluna-foto {
-        grid-column: span 1;
-        max-height: none; /* SOLUÇÃO: Remove a trava de altura para a legenda aparecer inteira no celular */
-        height: 320px;    /* Define um tamanho fixo excelente para a foto no celular */
-        order: 1; 
-    }
-}
-
-
-
-
-
-
-
-/* ==========================================================
-   TÍTULOS E ESTRUTURA COMPATÍVEL
-   ========================================================== */
 .titulo-grade-projetos {
     font-size: 1.6rem;
     font-weight: 700;
@@ -419,20 +194,13 @@ body.alto-contraste {
     margin-bottom: 1.2rem;
     color: #0056b3;
     letter-spacing: -0.5px;
-    
-    /* Aumente de 120px para 160px. Isso força a rolagem a parar mais abaixo */
-    scroll-margin-top: 160px; 
 }
 
-
-
-
-
 /* ==========================================================
-   ESTILIZAÇÃO DO CARD DE INTRODUÇÃO GERAL (CORRIGIDO)
+   4. CARD DE INTRODUÇÃO GERAL
    ========================================================== */
 .card-introducao-geral {
-    margin-top: 2rem; /* [NOVO] Cria o espaço seguro para o card não colar no menu fixo */
+    margin-top: 2rem; 
     margin-bottom: 2rem;
     padding: 2rem;
     background: linear-gradient(135deg, #f5f8ff 0%, #ffffff 100%);
@@ -441,18 +209,11 @@ body.alto-contraste {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     position: relative;
     overflow: hidden;
-    
-    /* [NOVO] Garante que quando clicarem em "Início", o menu fixo não cubra o topo do card */
-    scroll-margin-top: 110px; 
-    
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
                 border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-
-
-/* Detalhe estético: barra tecnológica superior no card de abertura */
 .card-introducao-geral::before {
     content: "";
     position: absolute;
@@ -487,19 +248,14 @@ body.alto-contraste {
     color: #0056b3;
 }
 
-/* Efeito Interativo ao passar o mouse ou navegar via teclado no card principal */
 .card-introducao-geral:hover,
 .card-introducao-geral:focus-within {
-    transform: translateY(-12px); /* Aumentei de -6px para -12px (sobe o dobro) */
+    transform: translateY(-12px); 
     border-color: #00d2ff;
-    border-width: 2px; /* Deixa a borda que acende mais espessa */
-    
-    /* Aumentei os raios da sombra (40px e 60px) para espalhar mais o brilho neon */
+    border-width: 2px; 
     box-shadow: 0 30px 60px rgba(0, 210, 255, 0.25), 0 10px 20px rgba(0, 86, 179, 0.1);
 }
 
-
-/* Banner de chamada de ação final em Destaque */
 .texto-chamada-links {
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -514,14 +270,7 @@ body.alto-contraste {
 }
 
 /* ==========================================================
-   GRADE DE CARDS COM EFEITOS INTERATIVOS
-   ========================================================== */
-
-/* ==========================================================
-   GRADE DE CARDS COM DESTAQUE AZULADO FORTE E BORDA GIRATÓRIA
-   ========================================================== */
-/* ==========================================================
-   GRADE DE CARDS COM DESTAQUE AZULADO FORTE E BORDA GIRATÓRIA
+   5. GRADE DE CARDS PEDAGÓGICOS COM CONTORNO ANIMADO
    ========================================================== */
 .grade-cards-projeto {
     display: grid;
@@ -531,10 +280,7 @@ body.alto-contraste {
 }
 
 .card-projeto {
-    /* [TURBINADO] Tom de fundo azulado bem mais visível e nítido */
     background: #dbeafe; 
-    
-    /* [TURBINADO] Borda inicial escura e bem definida para desenhar o card */
     border: 2px solid #2563eb; 
     border-radius: 14px;
     padding: 1.8rem 1.5rem;
@@ -543,11 +289,8 @@ body.alto-contraste {
     gap: 0.8rem;
     position: relative;
     z-index: 1;
-    overflow: hidden; /* Corta o gradiente para virar uma linha fina na borda */
-    
-    /* [NOVO] Adiciona uma leve sombra fixa para o card saltar aos olhos de início */
+    overflow: hidden; 
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
-    
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
                 background-color 0.3s ease,
                 box-shadow 0.4s ease;
@@ -563,15 +306,10 @@ body.alto-contraste {
 .card-projeto p {
     font-size: 1.0rem !important; 
     line-height: 1.5;
-    /* [TURBINADO] Texto escuro e forte para garantir excelente contraste de leitura */
     color: #1e293b; 
     margin: 0;
 }
 
-/* ==========================================================
-   O SEGREDO DA LINHA MÓVEL: ELEMENTO DE LUZ TRASEIRO
-   ========================================================== */
-/* Faixa de luz em degradê que vai passar por trás girando */
 .card-projeto::before {
     content: "";
     position: absolute;
@@ -579,38 +317,30 @@ body.alto-contraste {
     left: -50%;
     width: 200%;
     height: 200%;
-    /* Gradiente cônico que cria o raio de luz azul/ciano correndo */
     background: conic-gradient(from 0deg, transparent 60%, #00d2ff 85%, #0056b3 100%);
     z-index: -2;
-    opacity: 0; /* Começa desligado */
+    opacity: 0; 
     transition: opacity 0.3s ease;
 }
 
-/* Máscara interna para tampar o centro do card, criando a linha fina */
 .card-projeto::after {
     content: "";
     position: absolute;
-    inset: 2px; /* Espessura da linha iluminada (2px de borda) */
-    background: #dbeafe; /* [TURBINADO] Acompanha o novo tom forte do card */
+    inset: 2px; 
+    background: #dbeafe; 
     border-radius: 12px;
     z-index: -1;
     transition: background-color 0.3s ease;
 }
 
-/* ==========================================================
-   GATILHO DE ATIVAÇÃO DA ANIMAÇÃO (HOVER / FOCUS)
-   ========================================================== */
 .card-projeto:hover,
 .card-projeto:focus-within {
-    transform: translateY(-8px); /* Sobe um pouquinho mais alto */
-    background-color: #ffffff; /* O fundo limpa para dar contraste total com a luz correndo */
-    border-color: transparent; /* Esconde a borda antiga para dar lugar à linha neon */
-    
-    /* [NOVO] Adiciona um brilho estendido de LED ao redor do card enquanto a luz gira */
+    transform: translateY(-8px); 
+    background-color: #ffffff; 
+    border-color: transparent; 
     box-shadow: 0 20px 35px rgba(0, 210, 255, 0.25);
 }
 
-/* Ao passar o mouse, o centro fica branco e a luz do contorno acende */
 .card-projeto:hover::after,
 .card-projeto:focus-within::after {
     background-color: #ffffff; 
@@ -618,164 +348,88 @@ body.alto-contraste {
 
 .card-projeto:hover::before,
 .card-projeto:focus-within::before {
-    opacity: 1; /* Liga a fita de luz */
-    animation: girarBorda 2s linear infinite; /* Inicia o giro contínuo */
-}
-
-/* Rotação em 360 graus do gradiente cônico */
-@keyframes girarBorda {
-    100% {
-        transform: rotate(360deg);
-    }
+    opacity: 1;
 }
 
 /* ==========================================================
-   BLINDAGEM DO MODO ALTO CONTRASTE (WCAG)
+   6. SEÇÃO DE DUAS COLUNAS (LINKS + FOTO DA ESCOLA)
    ========================================================== */
-body.alto-contrast .card-projeto {
-    background: #000000;
+.container-duas-colunas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) repeat(7, 1fr);
+    gap: 2rem;
+    align-items: stretch; 
+}
+
+.coluna-links {
+    grid-column: span 5;
+    background-color: var(--bg-site);
     border: 2px solid var(--texto-site);
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-height: 480px; 
+    overflow-y: auto;  
 }
 
-body.alto-contraste .card-projeto::before,
-body.alto-contraste .card-projeto::after {
-    display: none;
+.coluna-links h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--texto-site);
+    border-bottom: 2px solid var(--azul-acessivel);
+    padding-bottom: 0.5rem;
 }
 
-body.alto-contraste .card-projeto:hover {
-    border-color: var(--amarelo-foco);
-    box-shadow: 0 0 20px var(--amarelo-foco);
-    transform: translateY(-4px);
+.lista-links-alunos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
-.rodape-linha-unica {
-    background-color: #ffffff;
-    color: #1a1a1a;
+.lista-links-alunos a {
+    color: var(--azul-acessivel);
+    text-decoration: underline;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.2rem 0;
+}
+
+.coluna-foto {
+    grid-column: span 7;
+    display: flex;
+    max-height: 480px; 
+}
+
+.molde-foto {
+    margin: 0;
+    border: 2px solid var(--texto-site);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--texto-site);
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: 100%;
+}
+
+.molde-foto img {
+    width: 100%;
+    height: 0; 
+    flex-grow: 3; 
+    object-fit: cover; 
+}
+
+.molde-foto figcaption {
+    background-color: var(--texto-site);
+    color: var(--bg-site);
+    padding: 0.8rem;
     text-align: center;
-    padding: 8px 0;            /* Altura mínima e compacta */
-    font-family: Arial, sans-serif;
+    font-weight: bold;
+    flex-shrink: 0; 
 }
-
-.rodape-linha-unica p {
-    margin: 0;                 /* Remove margens para não criar altura extra */
-    font-size: 13px;
-    letter-spacing: 0.5px;
-}
-
-
-
-
 
 /* ==========================================================
-   RESPONSIVIDADE PARA SMARTPHONES (ATÉ 768px)
-   ========================================================== */
-@media (max-width: 768px) {
-    .card-introducao-geral {
-        padding: 1.5rem 1rem;
-    }
-
-    .card-introducao-geral h2 {
-        font-size: 1.5rem;
-    }
-
-    .card-introducao-geral p {
-        font-size: 1.1rem;
-        line-height: 1.5;
-    }
-
-    .titulo-grade-projetos {
-        font-size: 1.3rem;
-        margin-top: 1.8rem;
-    }
-
-    .grade-cards-projeto {
-        grid-template-columns: 1fr; /* Converte a grade horizontal em torre única */
-        gap: 1rem;
-    }
-
-    .card-projeto {
-        padding: 1.5rem 1rem;
-    }
-    
-    .texto-chamada-links {
-        padding: 1rem;
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-}
-
-
-
-
-
-
-/* Grid que organiza os 5 artigos na tela */
-.grade-artigos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Estilo do cartão de cada artigo */
-.card-artigo {
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-}
-
-/* Container da Imagem */
-.capa-container {
-  width: 100%;
-  height: 220px;
-}
-
-.capa-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Espaço abaixo da imagem focado nos links */
-.botoes-container {
-  padding: 20px;
-  display: flex;
-  justify-content: space-around; /* Separa os links igualmente */
-  align-items: center;           /* Centraliza verticalmente */
-  background-color: #fafafa;
-}
-
-/* Estilo dos links individuais */
-.link-artigo {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 8px 16px;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-  transition: all 0.2s ease;
-  text-align: center;
-}
-
-/* Efeito ao passar o mouse nos links */
-.link-artigo:hover {
-  background-color: #007bff;
-  color: #ffffff;
-}
-/* Faz a tela deslizar suavemente até a galeria em vez de dar um pulo seco */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Garante que os 5 artigos fiquem em uma grade organizada lado a lado */
-.grade-imagens-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  padding: 20px 0;
-}
+   7. BLOCO DA GALERIA DE 5 ARTIGOS DE PROJETOS
