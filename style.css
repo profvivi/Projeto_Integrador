@@ -357,32 +357,37 @@ body.alto-contraste {
 }
 
 /* TRATAMENTO ISOLADO DAS IMAGENS DA GALERIA - FORÇA A LARGURA EXATA */
-.card-artigo {
-    width: 280px !important;    /* Limita o tamanho do bloco para não estourar os 1000px */
-    max-width: 100% !important; /* Impede que passe do limite da tela do computador */
-    display: inline-block;      /* Faz com que elas fiquem uma ao lado da outra naturalmente */
-    margin: 10px;               /* Cria uma separação limpa entre as fotos */
-}
-
-.capa-img {
-    width: 100% !important;     /* Obriga a foto a respeitar a largura do bloco (280px) */
-    height: 180px !important;   /* Define uma altura fixa para não distorcer o visual */
-    object-fit: cover !important; /* Faz o recorte proporcional e elegante da imagem */
-}
-
-/* Centraliza e distribui os cartões das fotos de forma elegante na tela */
+/* TRATAMENTO ISOLADO DAS IMAGENS DA GALERIA - AJUSTE DE LARGURA PARA 1000px */
 .grade-imagens-links {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 20px !important;
-    justify-content: center !important; /* MÁGICA: Espalha e centraliza as fotos na tela */
+    gap: 30px !important;            /* Dá um espaço elegante entre os cards */
+    justify-content: center !important; /* Centraliza o grupo de imagens nos 1000px */
+    max-width: 1000px !important;    /* Força o alinhamento idêntico ao do body */
+    margin: 0 auto !important;
+    padding: 20px 0 !important;
 }
 
-/* Ajusta o tamanho dos cartões para preencherem melhor o espaço */
 .card-artigo {
-    width: 280px !important; /* Aumentado um pouquinho para a imagem ficar mais nítida na tela */
+    width: 300px !important;        /* AUMENTADO: O cartão agora fica maior e preenche a tela */
     max-width: 100% !important;
-    display: block !important;
+    background-color: var(--bg-site);
+    border: 2px solid var(--texto-site);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.capa-container {
+    width: 100% !important;
+    height: 200px !important;       /* Aumentado a altura para acompanhar a nova largura */
+    overflow: hidden;
+}
+
+.capa-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;   /* Recorta a foto proporcionalmente sem distorcer */
 }
 
 
