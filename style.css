@@ -455,3 +455,133 @@ body.alto-contraste {
     background-color: var(--bg-site);
     margin-top: 2rem;
 }
+
+/* ==========================================================
+   8. RESPONSIVIDADE E MOBILE (ATÉ 768px)
+   ========================================================== */
+@media (max-width: 768px) {
+    
+    .cabecalho-principal {
+        padding: 0.8rem 1rem;
+    }
+
+    .barra-acessibilidade {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .controles-fonte {
+        gap: 4px;
+    }
+
+    .barra-acessibilidade button {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: inline-block; 
+        background-color: var(--azul-acessivel);
+        color: var(--bg-site);
+        border: 2px solid var(--texto-site);
+        padding: 0.4rem 0.8rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+        line-height: 1;
+        z-index: 99999;
+        order: 1;
+        flex-shrink: 0;
+    }
+
+    .logo {
+        order: 2; 
+        text-align: left;
+        flex-grow: 1; 
+        padding-left: 15px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .logo a {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .cabecalho-principal .menu-nav {
+        display: none;
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-site);
+        border-bottom: 3px solid var(--texto-site);
+        border-top: 1px solid var(--texto-site);
+        padding: 1rem;
+        z-index: 99998;
+    }
+
+    .cabecalho-principal .menu-nav.aberto {
+        display: block;
+    }
+
+    .menu-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .menu-nav a {
+        display: block;
+        width: 100%;
+        padding: 0.8rem 0;
+        border-bottom: 1px dashed var(--texto-site);
+        text-align: left;
+    }
+    
+    .menu-nav li:last-child a {
+        border-bottom: none;
+    }
+
+    .menu-nav a[aria-current="page"] {
+        border-bottom: none;
+        border-left: 6px solid var(--azul-acessivel);
+        padding-left: 0.5rem;
+    }
+
+    /* SOLUÇÃO MOBILE DEFINITIVA: Empilha as colunas e remove as travas de altura */
+    .container-duas-colunas {
+        grid-template-columns: 1fr;
+        gap: 2.5rem; /* Espaço entre as seções no celular */
+    }
+
+    .coluna-links {
+        grid-column: span 1;
+        max-height: none; /* Deixa os links respirarem no celular */
+        order: 2; 
+    }
+
+    .coluna-foto {
+        grid-column: span 1;
+        max-height: none; /* Remove a trava de altura para a legenda aparecer inteira no celular */
+        height: 320px;    /* Define um tamanho fixo excelente para a foto no celular */
+        order: 1; 
+    }
+
+    .grade-cards-projeto {
+        grid-template-columns: 1fr;
+    }
+}
+
