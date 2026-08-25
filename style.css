@@ -448,6 +448,7 @@ body.alto-contraste {
     color: var(--texto-site);
     background-color: var(--bg-site);
     margin-top: 2rem;
+     max-width: 1000px;
 }
 
 /* ==========================================================
