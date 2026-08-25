@@ -450,22 +450,6 @@ body.alto-contraste {
     margin-top: 2rem;
 }
 
-/* Cole este bloco no final absoluto do seu arquivo style.css */
-
-.grade-imagens-links {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 20px !important;
-    justify-content: center !important;
-    max-width: 1000px !important; /* Força a galeria a respeitar o limite exato do seu site */
-    margin: 0 auto !important;     /* Centraliza o bloco inteiro na tela */
-    padding: 20px !important;
-}
-
-.grade-imagens-links .card-artigo {
-    width: 280px !important;       /* Garante um tamanho seguro para as fotos não estourarem */
-    max-width: 100% !important;
-}
 
 
 /* ==========================================================
