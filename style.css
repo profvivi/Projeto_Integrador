@@ -467,6 +467,9 @@ body.alto-contraste {
 /* ==========================================================
    8. RESPONSIVIDADE E MOBILE (ATÉ 768px)
    ========================================================== */
+/* ==========================================================
+   8. RESPONSIVIDADE E MOBILE (ATÉ 768px - COM CORREÇÃO DE IMAGENS)
+   ========================================================== */
 @media (max-width: 768px) {
     
     .cabecalho-principal {
@@ -569,28 +572,44 @@ body.alto-contraste {
         padding-left: 0.5rem;
     }
 
-    /* SOLUÇÃO MOBILE DEFINITIVA: Empilha as colunas e remove as travas de altura */
+    /* Empilha as colunas de links e escola no celular */
     .container-duas-colunas {
         grid-template-columns: 1fr;
-        gap: 2.5rem; /* Espaço entre as seções no celular */
+        gap: 2.5rem; 
     }
 
     .coluna-links {
         grid-column: span 1;
-        max-height: none; /* Deixa os links respirarem no celular */
+        max-height: none; 
         order: 2; 
     }
 
     .coluna-foto {
         grid-column: span 1;
-        max-height: none; /* Remove a trava de altura para a legenda aparecer inteira no celular */
-        height: 320px;    /* Define um tamanho fixo excelente para a foto no celular */
+        max-height: none; 
+        height: 320px;    
         order: 1; 
     }
 
-    .grade-cards-projeto {
+    /* CORREÇÃO DAS IMAGENS: Faz a grade e os cartões ocuparem o espaço total no celular sem quebrar */
+    .grade-cards-projeto,
+    .grade-imagens-links {
         grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .card-artigo {
+        width: 100% !important;      /* Faz a imagem ocupar a largura adaptável do celular */
+        max-width: 340px !important; /* Limita um tamanho bonito para não ficar gigante */
+        margin: 10px 0 !important;
+    }
+
+    .capa-img {
+        width: 100% !important;
+        height: 200px !important;    /* Proporção ideal de visualização para smartphone */
+        object-fit: cover !important;
     }
 }
-
-
