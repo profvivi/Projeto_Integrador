@@ -167,23 +167,23 @@ body.alto-contraste {
 
 /* Alvos das âncoras configurados para compensar a altura do topo fixo */
 #secao-introducao {
-    scroll-margin-top: 220px; 
+    scroll-margin-top: 280px; 
 }
 
 #ancora-integracao {
-    scroll-margin-top: 220px;
+    scroll-margin-top: 280px;
     display: block;
     height: 1px;
 }
 
 #ancora-links {
-    scroll-margin-top:220px;
+    scroll-margin-top:280px;
     display: block;
     height: 1px;
 }
 
 #secao-galeria {
-    scroll-margin-top: 220px;
+    scroll-margin-top: 280px;
     padding: 2rem 0;
 }
 
@@ -191,7 +191,7 @@ body.alto-contraste {
     font-size: 1.6rem;
     font-weight: 700;
     margin-top: 2.5rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 3.5rem;
     color: #0056b3;
     letter-spacing: -0.5px;
 }
