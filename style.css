@@ -613,3 +613,26 @@ body.alto-contraste {
         object-fit: cover !important;
     }
 }
+
+
+
+    /* Procure por estas classes bem no final do seu style.css, dentro do @media (max-width: 768px) */
+    
+    .card-artigo {
+        width: 100% !important;      /* Faz o cartão ocupar a largura adaptável do celular */
+        max-width: 320px !important; /* Limita um tamanho bonito para não ficar gigante na tela */
+        height: auto !important;     /* Libera a altura do cartão para acompanhar a imagem */
+        margin: 15px auto !important; /* Centraliza o cartão na tela do celular */
+    }
+
+    .capa-container {
+        width: 100% !important;
+        height: auto !important;     /* Libera o contêiner para não prender a foto no mobile */
+    }
+
+    .capa-img {
+        width: 100% !important;      /* OBRIGA a imagem a se ajustar à largura do celular */
+        height: auto !important;     /* A MÁGICA: A altura se calcula sozinha proporcionalmente, ELIMINANDO O CORTE! */
+        object-fit: contain !important; /* Garante que o print do site apareça 100% inteiro */
+        display: block !important;
+    }
