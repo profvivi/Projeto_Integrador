@@ -184,13 +184,13 @@ body.alto-contraste {
     scroll-margin-top:140px;
     display: block;
     height: 1px;
-    margin-top: 10px;
+   
 }
 
 #secao-galeria {
     scroll-margin-top: 140px;
     padding: 2rem 0;
-    margin-top: 10px;
+    margin-top: 20px;
      
 }
 
