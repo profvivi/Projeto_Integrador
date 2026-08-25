@@ -602,7 +602,7 @@ body.alto-contraste {
     }
 
    
-}
+
 
 
 
@@ -625,4 +625,6 @@ body.alto-contraste {
         height: auto !important;     /* A MÁGICA: A altura se calcula sozinha proporcionalmente, ELIMINANDO O CORTE! */
         object-fit: contain !important; /* Garante que o print do site apareça 100% inteiro */
         display: block !important;
+    }
+
     }
