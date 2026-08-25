@@ -707,19 +707,7 @@ body.alto-contraste .card-projeto:hover {
 
 
 
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f4f7f6;
-  min-height: 100vh;
-  padding: 40px 20px;
-}
 
 /* Grid que organiza os 5 artigos na tela */
 .grade-artigos {
