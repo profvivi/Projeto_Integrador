@@ -601,17 +601,7 @@ body.alto-contraste {
         width: 100% !important;
     }
 
-    .card-artigo {
-        width: 100% !important;      /* Faz a imagem ocupar a largura adaptável do celular */
-        max-width: 340px !important; /* Limita um tamanho bonito para não ficar gigante */
-        margin: 10px 0 !important;
-    }
-
-    .capa-img {
-        width: 100% !important;
-        height: 200px !important;    /* Proporção ideal de visualização para smartphone */
-        object-fit: cover !important;
-    }
+   
 }
 
 
