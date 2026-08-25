@@ -198,12 +198,16 @@ body.alto-contraste {
 .titulo-grade-projetos {
     font-size: 1.6rem;
     font-weight: 700;
-    margin-top: 2.5rem;
-    margin-bottom:1.2rem;
+    
+    /* A MÁGICA PARA DESENCANTAR DO MENU FIXO: */
+    padding-top: 150px;       /* Cria um colchão invisível que empurra o texto para baixo do menu */
+    margin-top: -110px;       /* Puxa a estrutura de volta para não criar um buraco gigante no site */
+    
+    margin-bottom: 1.2rem;    /* Mantém o seu 1.2rem original intacto abaixo dele */
     color: #0056b3;
     letter-spacing: -0.5px;
- 
 }
+
 
 /* ==========================================================
    4. CARD DE INTRODUÇÃO GERAL
