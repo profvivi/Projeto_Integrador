@@ -10,13 +10,13 @@
 
 <body>
 
-   
+    <!-- Links de salto: essencial para leitores de tela e navegação por teclado -->
     <a href="#conteudo-principal" class="links-salto">Pular para o conteúdo principal</a>
 
     <header class="cabecalho-principal">
         <div class="container">
             
-            
+            <!-- Barra de Acessibilidade (Fica no topo absoluto) -->
             <div class="barra-acessibilidade" role="toolbar" aria-label="Ferramentas de acessibilidade">
                 <div class="controles-fonte">
                     <button id="btn-diminuir" aria-label="Diminuir tamanho do texto">A-</button>
@@ -26,23 +26,23 @@
                 <button id="btn-contraste" aria-label="Alternar alto contraste">🌓 Alto Contraste</button>
             </div>
 
-          
+            <!-- Identificação / Logotipo -->
             <div class="logo">
                 <a href="#" aria-label="Projeto Integrador">
                     <span aria-hidden="true">🔹</span> Projeto Integrador
                 </a>
             </div>
 
-            
+            <!-- Botão do menu responsivo (Apenas para telas pequenas) -->
             <button class="menu-toggle" aria-expanded="false" aria-controls="menu-navegacao" aria-label="Abrir menu de navegação">
                 <span class="icone-menu" aria-hidden="true">≡</span>
             </button>
 
-           
+           <!-- Menu de navegação principal -->
 <nav id="menu-navegacao" class="menu-nav" aria-label="Menu principal">
     <ul>
         <li><a href="#secao-introducao" aria-current="page">Início</a></li>
-        <li><a href="#ancora-integracao">Integração</a></li> 
+        <li><a href="#ancora-integracao">Integração</a></li> <!-- DEVE SER IGUAL AO ID DO H2 -->
         <li><a href="#coluna-projetos">Links Projetos</a></li>
         <li><a href="#secao-galeria">Galeria</a></li>
     </ul>
@@ -50,6 +50,7 @@
         </div>
     </header>
        
+    <!-- Card Único de Introdução Geral -->
     <section id="secao-introducao" class="card-introducao-geral" aria-labelledby="titulo-introducao">
         <h2 id="titulo-introducao">Sobre o Projeto Integrador</h2>
         <p>
@@ -68,28 +69,28 @@
         </p>
     </section>
 
-    
+    <!-- Título da Grade Setorial com o ID correto para a âncora -->
     <div id="ancora-integracao"></div>
+<!-- Título da Grade Setorial com o ID correto inserido direto na tag -->
 
-
-<h2 id="titulo-galeria" class="titulo-grade-projetos"> O Que Você Vai Encontrar Nos Projetos:</h2>
+<h2 id="titulo-galeria" class="titulo-grade-projetos">🚀 O Que Você Vai Encontrar Nos Projetos:</h2>
    
-    
+    <!-- Grade de Cards Interativos -->
     <div class="grade-cards-projeto">
         
-      
+        <!-- Card 1 -->
         <article class="card-projeto">
             <h3>Programação Acessível</h3>
             <p>Sites estruturados com HTML5 semântico e comandos dinâmicos de acessibilidade (ajuste de fonte e alto contraste) para garantir autonomia a pessoas com baixa visão.</p>
         </article>
 
-       
+        <!-- Card 2 -->
         <article class="card-projeto">
             <h3>Combate à Desinformação</h3>
             <p>Seções dedicadas a desmistificar boatos e fake news sobre óptica e saúde visual, promovendo orientações baseadas em evidências científicas.</p>
         </article>
 
-        
+        <!-- Card 3 -->
         <article class="card-projeto">
             <h3>Portfólio Interdisciplinar</h3>
             <p>A integração real entre a Física (estudos sobre a óptica do olho humano e o comportamento da luz) e a Robótica (códigos, diagramas e protótipos de automação assistiva desenvolvidos no Tinkercad).</p>
@@ -97,7 +98,7 @@
 
     </div>
 
-   
+    <!-- Banner de Encerramento com chamada de ação -->
     <p class="texto-chamada-links">
         Navegue pelos links abaixo, teste as ferramentas de acessibilidade criadas pelos estudantes e conheça o resultado dessa jornada
         de aprendizado!
@@ -106,7 +107,7 @@
 <main class="conteudo-principal">
     <div class="container-duas-colunas">
         
-        
+        <!-- Coluna Menor: Links dos Alunos -->
         <section id="coluna-projetos" class="coluna-links" aria-labelledby="titulo-links">
             <h2 id="titulo-links">Links dos Projetos</h2>
             <ul class="lista-links-alunos">
@@ -123,11 +124,12 @@
             </ul>
         </section>
 
-        
+        <!-- Coluna Maior: Foto da Escola (ID na Section) -->
         <section id="secao-escola" class="coluna-foto" aria-labelledby="titulo-foto">
             <h2 id="titulo-foto" class="sr-only">Nossa Escola</h2>
             <figure class="molde-foto">
-                
+                <img src="img/escola.jpeg" alt="Fotografia da fachada principal da escola com os alunos reunidos na entrada.">
+                <!-- A legenda está aqui e vai aparecer sempre -->
                 <figcaption>Projeto de Integração - Nossa Escola</figcaption>
             </figure>
         </section>
