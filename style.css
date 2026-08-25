@@ -357,6 +357,16 @@ body.alto-contraste {
 }
 
 
+/* Correção definitiva: Devolve o visual perfeito para a foto da escola */
+.molde-foto {
+    overflow: hidden !important; /* Força a foto da escola a ficar presa no contêiner correto */
+}
+
+/* Deixa apenas as imagens da galeria livres se você preferir */
+.card-artigo .capa-container {
+    width: 1000px !important;
+    overflow: visible !important; 
+}
 
 
 
