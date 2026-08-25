@@ -72,14 +72,16 @@ body.alto-contraste {
 .cabecalho-principal {
     background-color: var(--bg-site);
     border-bottom: 3px solid var(--texto-site);
-    padding: 0.5rem 1rem; 
+    padding: 0.5rem 2rem; 
     width: 100%;
-    position: sticky;
-    top: 0;
+    position: -webkit-sticky; /* Garante compatibilidade em navegadores Safari/iOS */
+    position: sticky;         /* Mantém o menu preso no topo */
+    top: 0;                   /* Fixa no ponto zero absoluto do topo */
     z-index: 1000;
     display: block;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 
 .container {
     display: flex;
