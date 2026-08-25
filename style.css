@@ -169,7 +169,7 @@ body.alto-contraste {
 
 /* Alvos das âncoras configurados para compensar a altura do topo fixo */
 #secao-introducao {
-    scroll-margin-top: 160px; 
+    scroll-margin-top: 120px; 
 }
 
 #ancora-integracao {
