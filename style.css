@@ -356,46 +356,7 @@ body.alto-contraste {
     opacity: 1;
 }
 
-/* TRATAMENTO ISOLADO DAS IMAGENS DA GALERIA - FORÇA A LARGURA EXATA */
-/* TRATAMENTO ISOLADO DAS IMAGENS DA GALERIA - AJUSTE DE LARGURA PARA 1000px */
-/* CONFIGURAÇÃO EXATA PARA ENCAIXAR NOS 1000px DO SEU SITE */
-.grade-imagens-links {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 25px !important;
-    justify-content: center !important;
-    max-width: 1000px !important;
-    margin: 0 auto !important;
-    padding: 20px 0 !important;
-}
 
-.card-artigo {
-    width: 300px !important;         /* Tamanho ideal para caberem 3 por linha em 1000px */
-    height: 220px !important;        /* Define uma altura fixa para todos os cartões */
-    background-color: var(--bg-site);
-    border: 2px solid var(--texto-site);
-    border-radius: 12px;
-    overflow: hidden !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.capa-container {
-    width: 100% !important;
-    height: 100% !important;         
-}
-
-.capa-img {
-    width: 100% !important;          
-    height: 100% !important;         
-    object-fit: fill !important;     /* Preenche o bloco retangular perfeitamente */
-}
-
-
-.capa-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;   /* Recorta a foto proporcionalmente sem distorcer */
-}
 
 
 
