@@ -406,6 +406,7 @@ body.alto-contraste {
     grid-column: span 7;
     display: flex;
     max-height: 480px; 
+    max-width: 1000px;
 }
 
 .molde-foto {
@@ -418,6 +419,7 @@ body.alto-contraste {
     flex-direction: column; 
     width: 100%;
     height: 100%;
+    max-width: 1000px;
 }
 
 .molde-foto img {
@@ -425,6 +427,7 @@ body.alto-contraste {
     height: 0; 
     flex-grow: 3; 
     object-fit: cover; 
+    max-width: 1000px;
 }
 
 .molde-foto figcaption {
@@ -434,6 +437,7 @@ body.alto-contraste {
     text-align: center;
     font-weight: bold;
     flex-shrink: 0; 
+    max-width: 1000px;
 }
 
 /* ==========================================================
@@ -448,7 +452,6 @@ body.alto-contraste {
     color: var(--texto-site);
     background-color: var(--bg-site);
     margin-top: 2rem;
-     max-width: 1000px;
 }
 
 /* ==========================================================
