@@ -369,7 +369,7 @@ body.alto-contraste {
 }
 
 .card-artigo {
-    width: 300px !important;        /* AUMENTADO: O cartão agora fica maior e preenche a tela */
+    width: 500px !important;        /* AUMENTADO: O cartão agora fica maior e preenche a tela */
     max-width: 100% !important;
     background-color: var(--bg-site);
     border: 2px solid var(--texto-site);
