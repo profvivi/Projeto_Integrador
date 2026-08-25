@@ -1,6 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
     
-    // Captura de Elementos do DOM
     const menuToggle = document.querySelector('.menu-toggle');
     const menuNav = document.querySelector('.menu-nav');
     const btnContraste = document.getElementById('btn-contraste');
@@ -9,9 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const btnNormal = document.getElementById('btn-normal');
     const elementoHtml = document.documentElement;
 
-    /* ==========================================================
-       1. CONTROLE DO MENU HAMBÚRGUER COM SUPORTE A ÂNCORAS
-       ========================================================== */
     if (menuToggle && menuNav) {
         
         const fecharMenu = () => {
@@ -31,18 +27,16 @@ window.addEventListener('DOMContentLoaded', () => {
             estaAberto ? fecharMenu() : abrirMenu();
         });
 
-        // Correção de Ouro: Executa a rolagem suave após fechar a caixinha do menu mobile
+        
         const linksMenu = menuNav.querySelectorAll('a');
         linksMenu.forEach(link => {
             link.addEventListener('click', (evento) => {
                 const destinoHref = link.getAttribute('href');
                 
-                // Se for um link interno (âncora)
                 if (destinoHref.startsWith('#') && destinoHref !== '#') {
                     evento.preventDefault();
                     fecharMenu();
-                    
-                    // Espera 150 milissegundos para o menu sumir da tela e rola até o alvo correto
+                                     
                     setTimeout(() => {
                         const alvoElemento = document.querySelector(destinoHref);
                         if (alvoElemento) {
@@ -52,8 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        // Fecha se o usuário clicar fora do menu
+       
         document.addEventListener('click', (evento) => {
             if (!menuNav.contains(evento.target) && !menuToggle.contains(evento.target)) {
                 fecharMenu();
@@ -61,9 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==========================================================
-       2. REGRAS DE ALTERNAÇÃO DE ALTO CONTRASTE (CORRIGIDO)
-       ========================================================== */
     if (btnContraste) {
         btnContraste.addEventListener('click', () => {
             document.body.classList.toggle('alto-contraste');
@@ -76,9 +66,6 @@ window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('alto-contraste');
     }
 
-    /* ==========================================================
-       3. ZOOM DE ACESSIBILIDADE VIA VARIÁVEL CSS
-       ========================================================== */
     const tamanhoMaximo = 150;
     const tamanhoMinimo = 85; 
     const passo = 10;          
