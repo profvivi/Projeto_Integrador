@@ -178,8 +178,6 @@ body.alto-contraste {
     scroll-margin-top: 20px;
     display: block;
     height: 1px;
-   
-    
 }
 
 #ancora-links {
@@ -190,7 +188,7 @@ body.alto-contraste {
 }
 
 #secao-galeria {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 60px;
     padding: 2rem 0;
     margin-top: 20px;
      
