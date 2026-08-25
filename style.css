@@ -456,8 +456,8 @@ body.alto-contraste {
 
 /* AJUSTE DE TAMANHO DIRETAMENTE NA CLASSE CONTAINER */
 .capa-container {
-    width: 320px !important;  /* Define a largura exata desejada para o bloco */
-    height: 200px !important; /* Define a altura proporcional para o bloco */
+    width: 500px !important;  /* Define a largura exata desejada para o bloco */
+    height: 600px !important; /* Define a altura proporcional para o bloco */
     overflow: hidden;         /* Garante que a imagem não saia para fora desse espaço */
     border-radius: 8px;       /* Deixa as pontas do container arredondadas */
     margin: 10px;             /* Cria uma separação limpa entre os blocos */
