@@ -169,11 +169,11 @@ body.alto-contraste {
 
 /* Alvos das âncoras configurados para compensar a altura do topo fixo */
 #secao-introducao {
-    scroll-margin-top: 140px; 
+    scroll-margin-top: 160px; 
 }
 
 #ancora-integracao {
-    scroll-margin-top: 155px;
+    scroll-margin-top: 160px;
     display: block;
     height: 1px;
    
@@ -181,14 +181,14 @@ body.alto-contraste {
 }
 
 #ancora-links {
-    scroll-margin-top:140px;
+    scroll-margin-top:160px;
     display: block;
     height: 1px;
    
 }
 
 #secao-galeria {
-    scroll-margin-top: 140px;
+    scroll-margin-top: 160px;
     padding: 2rem 0;
     margin-top: 20px;
      
@@ -201,6 +201,7 @@ body.alto-contraste {
     margin-bottom:1.2rem;
     color: #0056b3;
     letter-spacing: -0.5px;
+     scroll-margin-top: 160px; 
 }
 
 /* ==========================================================
