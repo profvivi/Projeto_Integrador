@@ -22,7 +22,7 @@ body {
     transition: background-color 0.2s, color 0.2s;
     max-width: 1000px;
     margin: 0 auto;
-     padding-top: 160px !important; 
+     padding-top: 60px !important; 
 }
 
 body.alto-contraste {
