@@ -20,7 +20,7 @@ body {
     background-color: var(--bg-site);
     color: var(--texto-site);
     transition: background-color 0.2s, color 0.2s;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
      padding-top: 40px !important; 
 }
