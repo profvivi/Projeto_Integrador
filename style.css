@@ -442,3 +442,16 @@ body.alto-contraste {
 
 /* ==========================================================
    7. BLOCO DA GALERIA DE 5 ARTIGOS DE PROJETOS
+
+   /* ==========================================================
+   5. RODAPÉ E ELEMENTOS FINAIS
+   ========================================================== */
+.rodape-linha-unica {
+    border-top: 3px solid var(--texto-site);
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: var(--texto-site);
+    background-color: var(--bg-site);
+    margin-top: 2rem;
+}
