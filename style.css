@@ -176,12 +176,14 @@ body.alto-contraste {
     scroll-margin-top: 155px;
     display: block;
     height: 1px;
+    
 }
 
 #ancora-links {
     scroll-margin-top:140px;
     display: block;
     height: 1px;
+    margin-top: 10px;
 }
 
 #secao-galeria {
